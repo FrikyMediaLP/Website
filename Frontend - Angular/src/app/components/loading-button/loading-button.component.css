@@ -1,0 +1,49 @@
+button {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+
+    --x: 0px;
+    --y: 0px;
+}
+button[disabled] {
+    cursor: default;
+    background-color: rgba(var(--accent-numbers), 0.5);
+}
+button::after {
+    content: '';
+    position: absolute;
+    top: var(--y);
+    left: var(--x);
+    translate: -50% -50%;
+    background-color: rgba(255,255,255, 0.2);
+    border-radius: 100%;
+    width: 0%;
+    opacity: 1;
+    aspect-ratio: 1;
+}
+button.click::after {
+    animation: clickanimation 1000ms ease forwards;
+}
+
+@keyframes clickanimation {
+    0% {
+        width: 0%;
+        opacity: 1;
+    }
+
+    50% {
+        width: 100%;
+    }
+
+    100% {
+        width: 100%;
+        opacity: 0;
+    }
+}

@@ -1,0 +1,123 @@
+.wavy {
+    padding-bottom: 5rem;
+    background-color: var(--color-light);
+}
+
+section {
+    margin-bottom: 8rem;
+    margin-top: 8rem;
+    color: white;
+}
+
+section > div { 
+    margin: 0 auto;
+    max-width: 110ch;
+    padding: 0 2rem;
+}
+
+section:not(.wavy) {
+    margin-bottom: 10rem;
+    margin-top: 10rem;
+}
+
+section .ChapterHeader {
+    font-size: 3rem;
+    border-bottom: 1px solid transparent;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    padding-left: 10rem;
+    transition: 1000ms ease;
+}
+
+section .ChapterHeader.visible {
+    border-color: var(--accent);
+    padding-left: 0rem;
+}
+
+section .SubChapterHeader {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 5rem;
+    margin-bottom: 0;
+    position: relative;
+}
+section .SubChapterHeader:nth-child(2) {
+    margin-top: 0;
+}
+section .SubChapterHeader span {
+    font-size: 1rem;
+    font-weight: 300;
+    font-style: italic;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0;
+    color: dimgray;
+}
+section .SubChapterHeader span a { 
+    margin: 0 1rem;
+}
+section ul li { 
+    margin-bottom: 0.5rem;
+}
+
+/* Image Halfer */
+.ImageHalfer {
+    display: grid;
+    grid-template-columns: auto 20rem;
+    grid-gap: 2rem;
+    margin-bottom: 0;
+    align-items: center;
+}
+.ImageHalfer.left {
+    grid-template-columns: 20rem auto;
+}
+
+.ImageHalfer .ImageHalferImage {
+    width: calc(100% - 2rem);
+    border-radius: 2rem;
+    padding: 1rem;
+    padding-bottom: 0.8rem;
+    background-color: var(--color-light);
+    height: min-content;
+}
+
+.wavy .ImageHalfer .ImageHalferImage {
+    background-color: var(--color-dark);
+}
+
+.ImageHalfer img {
+    width: 100%;
+    border-radius: 1rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    z-index: 5;
+    position: relative;
+}
+.ImageHalfer img:hover {
+    border-color: var(--accent);
+}
+
+/* IMAGE ENLARGER */
+#imageEnlargeWrapper {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    cursor: pointer;
+    z-index: 5;
+    backdrop-filter: blur(10px);
+}
+
+#imageEnlargeWrapper img {
+    max-height: 80vh;
+    max-width: 80vw;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    cursor: default;
+    background-color: var(--color-dark);
+}

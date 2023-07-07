@@ -1,0 +1,420 @@
+:host {
+    position: relative;
+}
+
+app-nav {
+    z-index: 4;
+}
+
+/* HEADER */
+header {
+    width: 100%;
+    height: 100svh;
+    overflow: hidden;
+    position: relative;
+}
+
+#headerState {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 41;
+    background-color: rgba(29, 29, 29, 0.4);
+    border-radius: 1rem;
+    color: white;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: 500ms ease;
+}
+
+#headerState:hover {
+    background-color: rgba(29, 29, 29, 1);
+}
+
+#headerState fa-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+#headerText {
+    color: white;
+    width: 100%;
+    position: absolute;
+    top: 30svh;
+    left: 1rem;
+    z-index: 5;
+    --font: 7;
+}
+
+#headerText > div {
+    position: relative;
+    width: fit-content;
+    font-size: calc(var(--font) * 1rem);
+}
+
+#headerText > div p {
+    display: inline-block;
+    padding: 0;
+    margin: 0 2rem;
+    text-transform: uppercase;
+    user-select: none;
+}
+
+#headerText > div p:nth-child(3) {
+    font-weight: 100;
+    margin-right: 0;
+}
+
+#headerText img {
+    display: inline-block;
+    height: calc(var(--font) * 0.8rem);
+    user-select: none;
+}
+
+#headerText > p {
+    font-size: calc(var(--font) * 0.2rem);
+    padding: 0;
+    margin: 0 2.5rem;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 400;
+    translate: 0 -0.5rem;
+}
+
+header .cards {
+    position: absolute;
+    bottom: 10svh;
+    left: 50%;
+    translate: -50% 0;
+    display: grid;
+    grid-template-columns: 140px 140px 140px 140px;
+    gap: 1rem;
+    z-index: 6;
+}
+header .cards > app-brand-icon {
+    background-color: #1D1D1D;
+    z-index: 6;
+}
+
+#headerBackground {
+    min-height: 100svh;
+    min-width: 100vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    filter: brightness(0.8);
+    z-index: 0;
+}
+
+/* SECTIONS */
+section {
+    color: white;
+    padding: 0 1rem;
+}
+
+section:not(:nth-of-type(1)) {
+    margin-top: 15rem;
+}
+
+main > section > div {
+    max-width: 110ch;
+    margin: 0 auto;
+}
+main > section > div > p{
+    z-index: 1;
+    position: relative;
+}
+
+section .sectionheader {
+    color: var(--accent);
+    font-size: 4rem;
+    font-weight: 300;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+section .sectionsubheader {
+    margin-top: 2rem;
+    margin-bottom: 0rem;
+    padding-left: 5rem;
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: left !important;
+    text-decoration: none;
+    position: relative;
+    width: fit-content;
+    transition: 2000ms ease;
+}
+section .sectionsubheader.visible {
+    padding-left: 0;
+}
+section .sectionsubheader::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    transition: 2000ms ease;
+    background-color: var(--accent);
+}
+
+section .sectionsubheader.visible::after {
+    width: 100%;
+}
+
+section > div > p:not(:is(.sectionheader, .sectionsubheader)) {
+    margin-bottom: 3rem;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 2rem;
+}
+
+section > div > p b {
+    color: var(--accent);
+    font-weight: normal;
+    position: relative;
+}
+
+section > div > p b::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    height: 1px;
+    width: 0;
+    background-color: var(--accent);
+    transition: 1500ms ease;
+}
+
+section > div > p b.visible::after {
+    width: 100%;
+}
+
+.wavy {
+    background-color: var(--color-light);
+    padding-bottom: 10rem;
+    padding-top: 4rem;
+}
+
+.diagonal p {
+    color: white;
+}
+
+/* FRIKYBOT */
+section.frikybot {
+    position: relative;
+}
+
+section.frikybot .sectionheader {
+    color: var(--frikybot-light) !important;
+    font-weight: bold;
+}
+
+.frikybot_wrapper .frikybot_description_wrapper {
+    display: grid;
+    grid-template-columns: auto 20rem;
+    gap: 2rem;
+}
+
+.frikybot_wrapper .frikybot_description {
+    font-size: 1.3rem;
+    line-height: 2rem;
+}
+
+.frikybot_wrapper .frikybot_icon {
+    width: 20rem;
+    position: relative;
+}
+
+.frikybot_wrapper .frikybot_description_wrapper img {
+    width: 20rem;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    translate: 0 -50%;
+}
+
+.frikybot_wrapper .frikybot_features {
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+.frikybot_wrapper .frikybot_features > div {
+    display: grid;
+    grid-template-rows: 100%;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.frikybot_wrapper .frikybot_features > div.three_cols {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.frikybot_wrapper .frikybot_features > div.two_cols {
+    grid-template-columns: 2fr 1fr;
+}
+.frikybot_wrapper .frikybot_features > div.two_cols > div:first-child {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: "img1 img2"
+                         "name name";
+    column-gap: 1rem;
+}
+.frikybot_wrapper .frikybot_features > div.two_cols > div:first-child img:last-of-type {
+    grid-area: img2;
+}
+.frikybot_wrapper .frikybot_features > div.two_cols > div:first-child img:first-of-type {
+    grid-area: img1;
+}
+.frikybot_wrapper .frikybot_features > div.two_cols > div:first-child p {
+    grid-area: name;
+}
+
+.frikybot_wrapper .frikybot_features > div > div {
+    border-radius: 1rem;
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+    background-color: var(--color-light);
+    display: grid;
+    grid-template-columns: 100%;
+    --OffsetX: -50%;
+    --OffsetY: -50%;
+}
+
+.frikybot_wrapper .frikybot_features > div > div .frikybot_hover {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+}
+
+.frikybot_wrapper .frikybot_features > div > div .frikybot_hover::after  {
+    content: '';
+    display: block;
+    height: 200%;
+    aspect-ratio: 1;
+    background: radial-gradient(dimgray, transparent 50%);
+    border-radius: 50%;
+    opacity: 0;
+    position: absolute;
+    top: var(--OffsetY);
+    left: var(--OffsetX);
+    z-index: 0;
+}
+
+.frikybot_wrapper .frikybot_features > div > div:hover .frikybot_hover::after {
+    opacity: 0.1;
+}
+
+.frikybot_wrapper .frikybot_features .two_cols > div:first-of-type .frikybot_hover::after  {
+    top: var(--OffsetY);
+    left: calc(var(--OffsetX) + 50%);
+}
+
+.frikybot_wrapper .frikybot_features > div > div::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    border-radius: 1rem;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    background-image: linear-gradient(
+        15deg,
+        hsl(204deg 27% 31%) 0%,
+        hsl(205deg 36% 28%) 7%,
+        hsl(206deg 48% 25%) 30%,
+        hsl(205deg 66% 22%) 66%,
+        hsl(204deg 100% 18%) 100%
+    );
+    z-index: -1;
+}
+
+.frikybot_wrapper .frikybot_features > div > div img {
+    width: calc(100% - 4rem);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.frikybot_wrapper .frikybot_features > div > div p {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 200;
+    margin: 0 auto;
+}
+
+.frikybot_wrapper a {
+    margin-top: 5rem;
+    color: transparent;
+    font-size: 2rem;
+    display: block;
+    text-align: center;
+    background-image: linear-gradient(
+        15deg,
+        hsl(204deg 27% 31%) 0%,
+        hsl(205deg 36% 28%) 7%,
+        hsl(206deg 48% 25%) 30%,
+        hsl(205deg 66% 22%) 66%,
+        hsl(204deg 100% 18%) 100%
+    );
+    background-clip: text;
+    filter: brightness(3);
+}
+
+.frikybot_wrapper a:hover {
+    filter: brightness(2);
+}
+
+/* PROJECTS */
+.projects {
+    width: fit-content;
+}
+
+@media screen and (max-width: 1100px) {
+    .projects {
+        grid-template-columns: 100%;
+    }
+}
+
+/* IMAGE ENLARGER */
+#imageEnlargeWrapper {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    cursor: pointer;
+    z-index: 5;
+    backdrop-filter: blur(10px);
+}
+
+#imageEnlargeWrapper img {
+    max-height: 80vh;
+    max-width: 80vw;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    cursor: default;
+    background-color: var(--color-dark);
+}
+
+app-icon-wheel {
+    display: block;
+    margin: 0 auto;
+    margin-top: 10rem;
+    max-width: 50%;
+}

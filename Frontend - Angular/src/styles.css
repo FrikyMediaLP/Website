@@ -1,0 +1,94 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    background-color: #1D1D1D;
+}
+
+:root {
+    --accent: #fa3737;
+    --accent-numbers: 250, 55, 55;
+    --accent-hsl: 0deg 78% 53%;
+    --color-light: #232323;
+    --color-dark: #1D1D1D;
+    --color-link: #0fffd3;
+    --color-link-dark: #14deb9;
+    
+    --frikybot-light: #19a3ff;
+    --frikybot-dark: #028deb;
+    --frikybot-darker: #00497a;
+
+    --brand-twitch: #6441a5;
+    --brand-twitch-bright: #9146FF;
+    --brand-twitter: #1DA1F2;
+    --brand-youtube: red;
+    --brand-discord: #5865F2;
+    --brand-instagram: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    --brand-overbuff: #ff8d07;
+    --brand-github: #24292f;
+}
+
+a {
+    color: var(--color-link);
+}
+a:hover {
+    color: var(--color-link-dark);
+}
+
+/* Section Effects */
+.wavy {
+    --mask:
+          radial-gradient(67.08px at 50% 90.00px,#000 99%,#0000 101%) calc(50% - 60px) 0/120px 51% repeat-x,
+          radial-gradient(67.08px at 50% -60px,#0000 99%,#000 101%) 50% 30px/120px calc(51% - 30px) repeat-x,
+          radial-gradient(67.08px at 50% calc(100% - 90.00px),#000 99%,#0000 101%) calc(50% - 60px) 100%/120px 51% repeat-x,
+          radial-gradient(67.08px at 50% calc(100% + 60.00px),#0000 99%,#000 101%) 50% calc(100% - 30px)/120px calc(51% - 30px) repeat-x;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+    padding-top: 5rem;
+}
+.wavyTop {
+    --mask:
+          radial-gradient(67.08px at 50% 90.00px,#000 99%,#0000 101%) calc(50% - 60px) 0/120px 51% repeat-x,
+          radial-gradient(67.08px at 50% -60px,#0000 99%,#000 101%) 50% 30px/120px calc(51% - 30px) repeat-x,
+          radial-gradient(67.08px at 50% calc(100% - 90.00px),#000 99%,#000 101%) calc(50% - 60px) 100%/120px 51% repeat-x,
+          radial-gradient(67.08px at 50% calc(100% + 60.00px),#000 99%,#000 101%) 50% calc(100% - 30px)/120px calc(51% - 30px) repeat-x;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+    padding-top: 5rem;
+}
+.wavyBottom {
+    --mask:
+    radial-gradient(67.08px at 50% 90.00px,#000 99%,#000 101%) calc(50% - 60px) 0/120px 51% repeat-x,
+    radial-gradient(67.08px at 50% -60px,#000 99%,#000 101%) 50% 30px/120px calc(51% - 30px) repeat-x,
+    radial-gradient(67.08px at 50% calc(100% - 90.00px),#000 99%,#0000 101%) calc(50% - 60px) 100%/120px 51% repeat-x,
+    radial-gradient(67.08px at 50% calc(100% + 60.00px),#0000 99%,#000 101%) 50% calc(100% - 30px)/120px calc(51% - 30px) repeat-x;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+    padding-bottom: 5rem;
+}
+
+.diagonal {
+    position: relative;
+    margin-top: 8rem;
+    width: 100% !important;
+    padding-top: 5rem;
+    padding-bottom: 7rem;
+    z-index: 2;
+    color: white;
+    overflow: hidden;
+}
+.diagonal * {
+    z-index: 2;
+}
+.diagonal::after {
+    position: absolute;
+    top: 3rem;
+    left: -2rem;
+    content: '';
+    rotate: -3deg;
+    height: calc(100% - 7rem);
+    width: calc(100% + 4rem);
+    z-index: -1;
+    background-color: var(--color-light);
+}

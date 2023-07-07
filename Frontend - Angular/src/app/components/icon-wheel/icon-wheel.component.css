@@ -1,0 +1,76 @@
+.wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    margin: 0 auto;
+    border-radius: 50%;
+    --phi_offset: 0;
+    --radius: 40%;
+    background-color: var(--color-light);
+    z-index: 1;
+}
+.wrapper::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 120%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--color-light);
+    border: 1rem solid #202020;
+    z-index: 0;
+}
+
+.icon {
+    --color: #1fdb50;
+    --phi: 0;
+    position: absolute;
+    top: calc(50% - cos((var(--phi) + var(--phi_offset)) * 1deg) * var(--radius));
+    left: calc(50% + sin((var(--phi) + var(--phi_offset)) * 1deg) * var(--radius));
+    translate: -50% -50%;
+    width: 3rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--color);
+    overflow: hidden;
+    padding: 0.5rem;
+    z-index: 1;
+}
+.icon[href] {
+    cursor: pointer;
+    transition: 500ms ease;
+}
+.icon[href]:hover {
+    padding: 1rem !important;
+}
+
+.icon > img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 50%;
+}
+
+.icon > fa-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -45%;
+    font-size: 2rem;
+    border-radius: 50%;
+    filter: brightness(500);
+}
+
+.center {
+    width: 5rem;
+    padding: 1rem;
+    top: 50%;
+    left: 50%;
+    border: 1rem solid #202020;
+    transition: border-color 500ms ease-in;
+}
+
+.wrapper:hover .center {
+    border-color: rgba(var(--accent-numbers), 0.1);
+}

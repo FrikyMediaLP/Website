@@ -1,0 +1,179 @@
+.Project {
+    display: grid;
+    grid-template-columns: 100%;
+    color: white;
+    border: 1px dashed lightgray;
+    border-radius: 0.5rem;
+    padding: 0 1rem;
+    overflow: hidden;
+}
+
+.Project.show,
+.Project[tabindex="1"]:hover, 
+.Project[tabindex="1"]:focus-visible {
+    border-style: solid;
+    border-color: var(--color-secondary);
+}
+
+.Project .ProjectInfo {
+    display: grid;
+    grid-template-columns: auto 12rem 11rem;
+    font-family: 'DotsAllForNow';
+    grid-gap: 1rem;
+}
+
+.Project.show .ProjectInfo {
+    border-bottom: 1px solid lightgray;
+}
+.Project.show .ProjectInfo:hover {
+    border-bottom: 1px solid var(--color-primary);
+}
+
+.Project .ProjectInfo:focus-visible {
+    margin: 2px 0;
+}
+
+.Project .ProjectInfo[tabindex="1"] {
+    cursor: pointer;
+}
+
+.Project:not(.show):has(.ProjectInfo[tabindex="1"]):hover {
+    border-color: var(--color-secondary);
+}
+
+.Project .ProjectInfo .ProjectName {
+    font-size: 3rem;
+    margin: 0.6rem 0 0 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Project .ProjectInfo .ProjectStatus {
+    font-size: 1.5rem;
+    margin: 0;
+    margin-top: 1.3rem;
+}
+
+.Project .ProjectInfo .ProjectTimeline {
+    text-align: right;
+    font-size: 0.75rem;
+}
+
+.Project .ProjectInfo .ProjectTimeline p > span {
+    width: 1.4ch;
+    display: inline-block;
+}
+
+.Project .ProjectDetails {
+    max-height: 0;
+    border-top: 0px solid lightgray;
+    max-width: 100ch;
+    margin: 0 auto;
+}
+
+.Project.show .ProjectDetails {
+    margin-bottom: 1rem;
+}
+
+.Project.show .ProjectDetails a {
+    color: var(--color-link);
+}
+.Project.show .ProjectDetails a:hover {
+    color: var(--color-link-dark);
+}
+
+/* Project Details Styles */
+.Project .ProjectDetails .ProjectSection {
+    margin-bottom: 1rem;
+}
+.Project .ProjectDetails .ProjectSection h2 {
+    border-bottom: 1px solid lightgray;
+}
+
+.Project .ProjectDetails .ProjectSection.ImageLeft,
+.Project .ProjectDetails .ProjectSection.ImageRight {
+    --img-width: 20rem;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 1rem;
+    align-items: center;
+}
+
+.Project .ProjectDetails .ProjectSection.ImageRight {
+    grid-template-columns: auto var(--img-width);
+    grid-template-areas: 'txt image';
+}
+
+.Project .ProjectDetails .ProjectSection.ImageLeft {
+    grid-template-columns: var(--img-width) auto;
+    grid-template-areas: 'image txt';
+}
+
+.Project .ProjectDetails .ProjectSection.ImageLeft app-video,
+.Project .ProjectDetails .ProjectSection.ImageRight app-video,
+.Project .ProjectDetails .ProjectSection.ImageLeft img,
+.Project .ProjectDetails .ProjectSection.ImageRight img {
+    width: 100%;
+    grid-area: image;
+    border-radius: 0.4rem;
+    border: 2px solid transparent;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.Project .ProjectDetails .ProjectSection app-video {
+    cursor: default !important;
+}
+
+.Project .ProjectDetails .ProjectSection.ImageLeft img:hover,
+.Project .ProjectDetails .ProjectSection.ImageRight img:hover {
+    border-color: var(--color-secondary);
+}
+
+.Project .ProjectDetails .ProjectSection.ImageList {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+    grid-gap: 1rem;
+}
+
+.Project .ProjectDetails .ProjectSection.ImageList .ImageListWrapper {
+    display: grid;
+    grid-gap: 1rem;
+    overflow: hidden;
+}
+
+.Project .ProjectDetails .ProjectSection.ImageList .ImageListWrapper.WidthMode {
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+}
+.Project .ProjectDetails .ProjectSection.ImageList .ImageListWrapper.HeightMode {
+    grid-template-columns: repeat(5, max-content);
+    grid-template-rows: minmax(1rem, 20rem);
+}
+
+.Project .ProjectDetails .ProjectSection.ImageList .ImageListWrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.Project .ProjectDetails .ProjectSection.ImageList .ImageListWrapper img:hover {
+    border-color: var(--color-secondary);
+}
+
+.Project .WarningProjectCustomHTML {
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.Project .WarningProjectCustomHTML h2 {
+    color: orange;
+}
+
+.Project .WarningProjectCustomHTML button {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+}

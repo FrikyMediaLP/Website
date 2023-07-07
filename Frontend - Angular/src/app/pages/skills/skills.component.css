@@ -1,0 +1,42 @@
+p {
+    color: white;
+}
+
+:host-context(body.lightmode) p {
+    color: black;
+}
+
+#LevelWrapper{
+    display: grid;
+    grid-template-columns: auto 15rem;
+}
+
+section {
+    color: white;
+    padding: 0 1rem;
+    padding-bottom: 5rem;
+}
+
+section .ChapterHeader{
+    font-size: 3rem;
+    border-bottom: 1px solid #404040;
+    font-weight: bold;
+    margin-top: 0;
+}
+section .ChapterHeader > span {
+    font-size: 2rem;
+    translate: 0.5rem -1.5rem;
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+section.learning {
+    text-align: center;
+    border-left: 1px solid #404040;
+}
+
+section.learning app-brand-icon {
+    margin-right: 0;
+}

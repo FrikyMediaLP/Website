@@ -1,0 +1,49 @@
+<main>
+    <h1 #header>{{ lang === 'de' ? 'Aktive Projekte' : 'Active Projects'}}</h1>
+    <div #ActiveProjects class="ProjectList">
+        <app-project 
+            *ngFor="let project of active_projects"
+            [project]="project" 
+            (onImageEnlarge)="showEnlargeImage($event)"
+            (onShowToggle)="closeOtherProjects($event)"
+        ></app-project>
+    </div>
+    <h1 *ngIf="inactive_projects.length > 0">{{ lang === 'de' ? 'Inaktive / Beendete Projekte' : 'Inactive / Completed Projects'}}</h1>
+    <div #InctiveProjects class="ProjectList" *ngIf="inactive_projects.length > 0">
+        <app-project
+            *ngFor="let project of inactive_projects"
+            [project]="project"
+            (onImageEnlarge)="showEnlargeImage($event)"
+            (onShowToggle)="closeOtherProjects($event)"
+        ></app-project>
+    </div>
+    
+    <h1>{{ lang === 'de' ? 'Beiträge' : 'Contributions'}}</h1>
+    <app-project-summary 
+        (onImageClick)="showEnlargeImageEvent($event)"
+        [link]="'https://lx3.mint-kolleg.kit.edu/onlinekursphysik'"
+        [headersize]="0.5"
+        [title]="{ 
+            'de': 'HiWi Job: FrontEnd Webentwicklung von prozedural generierten Physik Übungsaufgaben',
+            'en': 'HiWi Job: FrontEnd Developer of procedural generated Physics Exams'
+        }"
+        [img]="'./../../assets/projects/hiwi/Logo_KIT.png'"
+        [description]="{ 
+            'de': [
+                'Als Student habe ich ein Semester begleitend am MINT-Kolleg geholfen einen Online Brückenkurs für die Fachrichtung Physik zu erstellen.',
+                'Ich war zuständig interaktive Textaufgaben mit zufälligen Zahlenwerten zu generieren. Konkret wurde ein Python Framework genutzt, das jede Aufgabe als Component verpackte, mithilfe von LaTeX meine zufälligen Textaufgaben in PDFs umwandelte und diese dann im Browser anzeigte.',
+                'Hier habe ich gelernt mit großen Projekten und mehreren Teammitgliedern zu arbeiten.'
+            ],
+            'en': [
+                'As a student, I worked along my 3rd Semester at the MINT-Kolleg to create an Online Physics Bridge Course.',
+                'I was responsible for generating interactive text problems. To be exact, a Python Framework was used to encapsulate each text problem task into Components, that used LaTeX to translated my text problems into PDFs which could then be displayed in the browser.',
+                'There I learned a lot about working with big Projects and multiple Teammembers.'
+            ]
+        }"
+        [color]="'var(--color-light)'"
+    ></app-project-summary>
+</main>
+
+<div #imageEnlargeWrapper id="imageEnlargeWrapper" (click)="hideEnlargedImage($event)" style="display: none;">
+    <img src="" />
+</div>

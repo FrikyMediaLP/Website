@@ -1,0 +1,213 @@
+:host {
+    width: calc(100% - 2rem);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -100%;
+}
+
+app-output {
+    position: absolute;
+    top: -15rem;
+    left: 50%;
+    translate: -50% 0;
+}
+
+/* LINK */
+#link[href=""] {
+    display: none;
+}
+
+#link {
+    --OffsetX: 50%;
+    --OffsetY: 50%;
+    color: white;
+    background-color: var(--brand-twitch);
+    margin: 0 auto;
+    margin-bottom: 5rem;
+    width: 80vw;
+    max-width: 1000px;
+    padding: 1rem;
+    display: grid;
+    text-decoration: none;
+    grid-template-columns: 80% 20%;
+    border-radius: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+#link::after {
+    content: '';
+    position: absolute;
+    top: var(--OffsetY);
+    left: var(--OffsetX);
+    translate: -50% -50%;
+    background: radial-gradient(lightgray, transparent 50%);
+    width: 50%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 500ms ease;
+}
+
+#link:hover::after {
+    opacity: 0.1;
+}
+
+#link #hovercatcher {
+    translate: 0 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    position: absolute;
+}
+
+#link div {
+    font-size: 3rem;
+    text-align: center;
+    translate: 0 0.5rem;
+    transition: 200ms ease;
+}
+#link:hover div {
+    font-size: 3.1rem;
+}
+
+#link fa-icon {
+    font-size: 4rem;
+}
+
+/* LOGIN DATA */
+.user {
+    margin: 0 auto;
+    width: calc(100% - 5rem);
+    max-width: 1000px;
+    color: white;
+    display: grid;
+    grid-template-columns: auto 10rem;
+    grid-template-rows: auto;
+    grid-template-areas: "text picture";
+    background-color: var(--color-light);
+    border: 1px solid var(--accent);
+    border-radius: 1rem;
+    padding: 0 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.user[hidden] {
+    display: none !important;
+}
+
+.user .userimg {
+    grid-area: picture;
+    position: relative;
+    width: 100%;
+}
+
+.user img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+.user .userdata {
+    grid-area: text;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.user .name {
+    font-size: 5rem;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 3rem;
+}
+.user .loggedin {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    translate: -50% -25%;
+    color: gray;
+    font-size: 1rem;
+}
+.user .logout {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    translate: -50% -25%;
+    color: gray;
+    font-size: 1rem;
+    text-decoration: underline;
+    color: var(--color-link);
+    cursor: pointer;
+}
+.user .logout:hover {
+    color: var(--color-link-dark);
+}
+
+/* LOADING */
+.user.loading {
+    padding-right: 1rem;
+    height: 12rem;
+}
+
+.user.loading .userimg {
+    background: dimgray;
+    background: linear-gradient(110deg, dimgray 8%, #757575 18%, dimgray 33%);
+    animation: 3.05s shine1 linear infinite;
+    background-size: 300% 300%;
+    margin: 1rem;
+    width: calc(100% - 1rem);
+    height: calc(100% - 2rem);
+    border-radius: 0.4rem;
+}
+
+.user.loading .userdata {
+    height: calc(100% - 1rem);
+    max-width: 500px;
+    position: absolute;
+    left: 50%;
+    translate: -50% 1rem;
+}
+
+.user.loading .userdata p {
+    background: dimgray;
+    color: transparent;
+    background: linear-gradient(110deg, dimgray 8%, #757575 18%, dimgray 33%);
+    animation: 1.5s shine2 linear infinite;
+    background-size: 200% 100%;
+    width: calc(100% - 2rem);
+    height: 2rem;
+    border-radius: 0.4rem;
+    translate: 0 0 !important;
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin: 1rem;
+}
+
+.user.loading .userdata .name {
+    translate: -3rem 0.1rem;
+}
+
+@keyframes shine1 {
+    from { 
+        background-position-x: 0%;
+    }
+    to {
+        background-position-x: -300%;
+    }
+}
+
+@keyframes shine2 {
+    from { 
+        background-position-x: 0%;
+    }
+    to {
+        background-position-x: -200%;
+    }
+}

@@ -1,0 +1,80 @@
+:host {
+    --border-color: transparent;
+
+    display: inline-block;
+    width: calc(138px);
+    height: calc(138px);
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+    border-radius: 0.5rem;
+}
+
+:host > a:not(:has(fa-icon)) {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+:host > a {
+    --OffsetX: -50%;
+    --OffsetY: -50%;
+    display: inline-block;
+    background-color: var(--color-light);
+    padding-bottom: 1rem;
+    padding-top: calc(1rem + 5px);
+    padding-right: calc(1rem + 5px);
+    padding-left: calc(1rem + 5px);
+    width: calc(112px - 1rem);
+    height: calc(112px - 1rem);
+    position: relative;
+    border-radius: 0.5rem;
+    border-bottom: 5px solid var(--border-color);
+    overflow: hidden;
+}
+
+:host > a[href=""] {
+    cursor: default;
+}
+
+:host-context(body.lightmode) :host > a {
+    background-color: var(--color-lightmode-light);
+}
+
+:host-context(body.lightmode) :host fa-icon,
+:host-context(body.lightmode) :host > a > div {
+    filter: invert(1);
+}
+
+:host > a:hover:after {
+    content: '';
+    display: block;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(dimgray, transparent 50%);
+    border-radius: 50%;
+    opacity: 0.2;
+    position: absolute;
+    top: var(--OffsetY);
+    left: var(--OffsetX);
+    z-index: 2;
+}
+
+:host fa-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: 3;
+    color: white;
+}
+
+.BrandIconHoverCatcher {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}

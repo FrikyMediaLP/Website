@@ -1,0 +1,5 @@
+<app-nav [inline]="router.url === '/'"></app-nav>
+<div [ngStyle]="{ 'margin-top': router.url !== '/' ? '5rem' : '0' }">
+    <router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>

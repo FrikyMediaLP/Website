@@ -1,0 +1,66 @@
+<div #wrapper [id]="hash" class="Project" [ngClass]="{ show: show }" >
+    <div class="ProjectInfo" 
+        (click)="details && toggleProject($event)" 
+        (keypress)="details && toggleProject($event)"
+        [tabindex]="project.details ? '1' : '-1'"
+        role="button"
+        aria-expanded="false"
+    >
+        <p class="ProjectName" [title]="(name[lang] || name['*'])">{{(name[lang] || name['*'])}}</p>
+        <p class="ProjectStatus">
+            Status 
+            <span [ngStyle]="{ color: status < 50 ? 'orange' : (status === 100 ? 'green' : 'lightblue') }">{{status}}%</span>
+        </p>
+        <div class="ProjectTimeline">
+            <p>{{start}}  - START</p>
+            <p>{{end || '-' }} <span></span> - END</p>
+        </div>
+    </div>
+    <div class="ProjectDetails">
+        <div 
+            class="ProjectSection" 
+            *ngFor="let section of details" 
+            [ngClass]="{ 
+                ImageLeft: section.image == 'left', 
+                ImageRight: section.image == 'right', 
+                ImageList: section.images
+            }"
+            [ngStyle]="{
+                '--img-width': section.image_width || ''
+            }"
+        >
+            <div>
+                <h2 [innerHTML]="(section.title[lang] || section.title['*']) | safeHTML"></h2>
+                <p *ngFor="let p of section.p" [innerHTML]="(p[lang] || p['*']) | safeHTML"></p>
+            </div>
+            <img 
+                *ngIf="section.image_url" 
+                [src]="section.image_url" 
+                [alt]="(section.image_alt ? (section.image_alt[lang] || section.image_alt['*']) : '')" 
+                [title]="(section.image_title ? (section.image_title[lang] || section.image_title['*']) : '')"
+                (click)="onImageClick(section.image_url)"
+                loading="lazy"
+            />
+
+            <app-video *ngIf="section.video_url" [source]="section.video_url" [lazy]="true">
+            </app-video>
+
+            <div *ngIf="section.images" class="ImageListWrapper" [ngClass]="{ WidthMode: section.images_mode !== 'height', HeightMode: section.images_mode === 'height' }">
+                <img 
+                    *ngFor="let img of section.images"
+                    [src]="img.url" 
+                    [alt]="(img.alt ? (img.alt[lang] || img.alt['*']) : '')" 
+                    [title]="(img.title ? (img.title[lang] || img.title['*']) : '')"
+                    (click)="onImageClick(img.url)"
+                    loading="lazy"
+                />
+            </div>
+        </div>
+        
+        <div *ngIf="custom_html && render_custom_html" class="ProjectCustomHTML" [innerHTML]="custom_html.html | safeHTML"></div>
+        <div *ngIf="custom_html && !render_custom_html" class="WarningProjectCustomHTML">
+            <h2>THIS PROJECT USES EXTERN JS - would you like to load this demo?</h2>
+            <button (click)="renderHTML()">YES</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,206 @@
+<main>
+    <!-- ABOUT ME -->
+    <section>
+        <div class="ImageHalfer left">
+            <div class="ImageHalferImage">
+                <img src="./../../assets/about/me_compact.webp" alt="Tim Klenk Frontshot" alt="" (click)="showEnlargeImage('./../../assets/about/me.webp')"/>
+            </div>
+            <div *ngIf="lang === 'de'">
+                <p class="ChapterHeader">Über mich</p>
+                <p>Ich bin <b>Tim Klenk</b> (* 18.05.1999) - ein <b>Tech</b>, <b>Gaming</b> und <b>Space</b> Nerd, der seitdem er denken kann an Projekte gebastelt hat, um seinen Alltag angenehmer zu machen.</p>
+                <p>Das startete als Kind, das ständig sein Zimmer umräumte, ging über als Teen mit Programmieren, um Matheaufgaben zu lösen und resultierte heute in automatisierten Tools für Live-Streaming und Hobby Hardware Projekten.</p>
+                <p>In der Grundschule hatte ich schon den Wunsch einmal auf das Technische Gymnasium zu gehen und plante meine Schulische Karriere dementsprechend.</p>
+                <p>Auf dem Technischen Gymnasium habe ich mich in so viele Dinge verliebt - darunter Hardware Programmierung, FrontEnd Applikationen aber auch Automatisierungen und Interaktionen von Systemen - sodass ich dies nun Beruflich verfolge.</p>
+            </div>
+            <div *ngIf="lang === 'en'">
+                <p class="ChapterHeader">About me</p>
+                <p>I am <b>Tim Klenk</b> (* 18.05.1999) - a <b>Tech</b>, <b>Gaming</b> and <b>Space</b> Nerd who, since he can remember, was always building things to make his day to day easier.</p>
+                <p>All of this started as a kid by restructuring my room every few weeks, went to Programming as a Teen to solve his Mathproblems easier and led to automatic Tools for Streaming and Smart Home Systems.</p>
+                <p>Way back in Elementary School I already dreamed going to an IT focused school and planned my academic career towards that goal - this broad me to the "Technical High School", a true dream School for me.</p>
+                <p>There I fell in love with so many things - hardware programming, FrontEnd Applications aswell as automation and cross system interactions - which I now persue in my career.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCHOOL -->
+    <section class="wavy">
+        <div class="ImageHalfer">
+            <div>
+                <p *ngIf="lang === 'de'" class="ChapterHeader">Schulablauf</p>
+                <p *ngIf="lang === 'en'" class="ChapterHeader">Academic Career</p>
+                <p class="SubChapterHeader">{{ lang === 'de' ? 'Realschule' : 'Secondary School' }} <span><a href="https://www.arrs.de/" target="_blank">August Renner Realschule</a>2009-2015</span></p>
+                <ul *ngIf="lang === 'de'">
+                    <li>Fokus auf Technik</li>
+                    <li>Abschlussprojekt: Holzhaus mit Automatischer Beleuchtung im Dunklen</li>
+                    <li>Auszeichnung <b>"Stern trifft Schule"</b> der Mercedes-Benz-Group</li>
+                </ul> 
+                <ul *ngIf="lang === 'en'">
+                    <li>Focus on Craft / Tools</li>
+                    <li>Final Exam Project: Wooden house with automatic lights controll in the dark</li>
+                    <li>Awarded <b>"Stern trifft Schule"</b> from the Mercedes-Benz-Group</li>
+                </ul>
+                
+                <p class="SubChapterHeader">Technisches Gymnasium <span><a href="https://jdsr.de/" target="_blank">Josef-Durler-Schule</a>2015-2018</span></p>
+                <ul *ngIf="lang === 'de'">
+                    <li>Profilfach: Informatik</li>
+                    <li>Inhalte: Java, SQL, Microcontroller Programmierung, HTML, CSS, JS</li>
+                    <li>Abschlussprojekt: Smart Home System auf Arduino x LAN Basis + WebInterface</li>
+                </ul> 
+                <ul *ngIf="lang === 'en'">
+                    <li>Profile Subject: IT</li>
+                    <li>Topics: Java, SQL, Microcontroller programming, HTML, CSS, JS</li>
+                    <li>Final Exam Project: Smart Home System based on Ardionos x LAN + WebInterface</li>
+                </ul>
+                
+                <p class="SubChapterHeader">Studium <span><a href="https://www.kit.edu/" target="_blank">Karlsruher Institute of Technology</a>2018-2023</span></p>
+                <ul *ngIf="lang === 'de'">
+                    <li>Fokus auf Elektrotechnik & Informationstechnik</li>
+                    <li>E-Tech Projekt 1: Audio Filter</li>
+                    <li>E-Tech Projekt 2: "Temperatur Sensor + Heizlogik" Schaltung</li>
+                    <li>IT Projekt: Segway Balance Controller</li>
+                    <li><a href="https://lx3.mint-kolleg.kit.edu/onlinekursphysik" target="_blank">HiWi Job: Mint-Kolleg</a> -> 1 Semester WebEntwicklung in Python x LaTeX</li>
+                    <li>Abbruch nach 9. Semestern</li>
+                </ul>
+                <ul *ngIf="lang === 'en'">
+                    <li>Focus on Electronics & IT</li>
+                    <li>E-Tech Project 1: Audio Filter</li>
+                    <li>E-Tech Project 2: "Temperature Sensor + Heating" Circuit</li>
+                    <li>IT Project: Segway Balance Controller</li>
+                    <li><a href="https://lx3.mint-kolleg.kit.edu/onlinekursphysik" target="_blank">Research Assistant: Mint-Kolleg</a> -> 1 Semester WebEngineer in Python x LaTeX</li>
+                    <li>Dropout after the 9th Semester</li>
+                </ul>
+            </div>
+            <div class="ImageHalferImage">
+                <img src="./../../assets/about/IMG-20160705-WA0000_compact.webp" alt="Tim Klenk Sideshot" (click)="showEnlargeImage('./../../assets/about/IMG-20160705-WA0000.webp')"/>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section>
+        <div>
+            <p class="ChapterHeader">Top Skills</p>
+            <div class="SkillsList">
+                <app-brand-icon [icon]="faJs" [size]="'5x'" [color]="'#F0DB4F'" [title]="'Javascript'"></app-brand-icon>
+                <app-brand-icon [icon]="faHtml5" [size]="'5x'" [color]="'#E44D26'" [title]="'HTML'"></app-brand-icon>
+                <app-brand-icon [icon]="faCss3Alt" [size]="'5x'" [color]="'#03a9fc'" [title]="'CSS'"></app-brand-icon>
+                <app-brand-icon [icon]="faNode" [size]="'5x'" [color]="'#3c873a'" [title]="'Node.js'"></app-brand-icon>
+                <div style="display: inline-block; translate: 0 -2rem;"><a [routerLink]="'../skills'">{{ lang === 'de' ? 'alle anzeigen' : 'show all' }}</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="wavy">
+        <div>
+            <p class="ChapterHeader">{{ lang === 'de' ? 'Beste Projekte' : 'Best Projects' }}</p>
+            <app-project-summary 
+                (onImageClick)="showEnlargeImage('./../../assets/projects/frikybot/Logo01_3.webp')"
+                [name]="'frikybot'"
+                [title]="{ 
+                    '*': 'FrikyBot'
+                }"
+                [img]="'./../../assets/projects/frikybot/Logo01_3_compact.webp'"
+                [description]="{ 
+                    'de': [
+                        'FrikyBot ist ein Twitch Chat Bot und Webinterface auf Node.js + Express.js Basis. Ein FrontEnd gebaut ohne Framework, Datenbanken mit eigener Architektur, Middleware Routing, Authentication, ein zusätzliches Package System, und und und ... - gebaut von einer Person über +-4 Jahre.'
+                    ],
+                    'en': [
+                        'FrikyBot is a  Twitch Chat Bot and Webinterface run on Node.js + Express.js. A FrontEnd built without any Framework, Databases with my own architecture, Middleware Routing, Authentication, an additional Package System, and much much more ... - built by one person over +-4 years.'
+                    ]
+                }"
+            ></app-project-summary>
+            <app-project-summary 
+                (onImageClick)="showEnlargeImage('./../../assets/about/Bett_Cropped.webp')"
+                [name]="'smarthome'"
+                [title]="{ 
+                    '*': 'Smart Home Prototype'
+                }"
+                [img]="'./../../assets/about/Bett_Cropped_compact.webp'"
+                [description]="{ 
+                    'de': [
+                        'Als Abschlussprojekt meines Abiturs habe ich ein Smart Home System mit verschiedenen Module und einem Server auf Arduinos gebaut. Diese Module wurden mit Ethernet Anschlussen versehen und kommunizierten so über das existierende Netzwerk des Hauses.',
+                        'Manche Module konnten über Sensoren Daten aus der Umgebung einlesen, verarbeiten und befehle an andere Module weitergeben. Andere Module konnten darauf Aktoren bewegen oder die gesammelten Daten anzeigen lassen.'
+                    ],
+                    'en': [
+                        'I built a Smart Home Prototype as my final exam project of my A Levels. This System contained multiple different modules based on one (or more) Arduinos, all linked together and to a central Hub Server using Ethernet / WiFi.',
+                        'Some Modules used sensors to collect real world data, others used information of other modules to activate motors or turn on lights and others displayed text or images of the current status.'
+                    ]
+                }"
+            ></app-project-summary>
+                
+            <app-project-summary 
+                (onImageClick)="showEnlargeImage('./../../assets/projects/hiwi/Logo_KIT.png')"
+                [link]="'https://lx3.mint-kolleg.kit.edu/onlinekursphysik'"
+                [headersize]="0.5"
+                [title]="{ 
+                    'de': 'HiWi Job: FrontEnd Webentwicklung von prozedural generierten Physik Übungsaufgaben',
+                    'en': 'HiWi Job: FrontEnd Developer of procedural generated Physics Exams'
+                }"
+                [img]="'./../../assets/projects/hiwi/Logo_KIT.png'"
+                [description]="{ 
+                    'de': [
+                        'Als Student habe ich ein Semester begleitend am MINT-Kolleg geholfen einen Online Brückenkurs für die Fachrichtung Physik zu erstellen.',
+                        'Ich war zuständig interaktive Textaufgaben mit zufälligen Zahlenwerten zu generieren. Konkret wurde ein Python Framework genutzt, das jede Aufgabe als Component verpackte, mithilfe von LaTeX meine zufälligen Textaufgaben in PDFs umwandelte und diese dann im Browser anzeigte.',
+                        'Hier habe ich gelernt mit großen Projekten und mehreren Teammitgliedern zu arbeiten.'
+                    ],
+                    'en': [
+                        'As a student, I worked along my 3rd Semester at the MINT-Kolleg to create an Online Physics Bridge Course.',
+                        'I was responsible for generating interactive text problems. To be exact, a Python Framework was used to encapsulate each text problem task into Components, that used LaTeX to translated my text problems into PDFs which could then be displayed in the browser.',
+                        'There I learned a lot about working with big Projects and multiple Teammembers.'
+                    ]
+                }"
+                [color]="'var(--color-dark)'"
+            ></app-project-summary>
+            <a [routerLink]="'/projects'" style="float: right;">{{ lang === 'de' ? 'alle anzeigen' : 'show all' }}</a>
+        </div>
+    </section>
+
+    <!-- DREAMS -->
+    <section>
+        <div>
+            <p *ngIf="lang === 'de'" class="ChapterHeader">Träume & Interessen</p>
+            <p *ngIf="lang === 'en'" class="ChapterHeader">Dreams & Interests</p>
+            <p class="SubChapterHeader">Tech</p>
+
+            <ul *ngIf="lang === 'de'">
+                <li>IT - Projekte basteln, neue Sprachen lernen, neueste Technolgien verfolgen, usw.</li>
+                <li>Elektrotechnik - E-Mobilität, PCs, Übertragungsmethoden, Leistungselektronik, usw.</li>
+            </ul>
+            <ul *ngIf="lang === 'en'">
+                <li>IT - building Projects, learning new Languages, staying up to date with new Technologies, etc. </li>
+                <li>Electronics - E-Mobility, PCs, Communications protocolls, etc.</li>
+            </ul>
+            
+            <p class="SubChapterHeader">Space</p>
+            <ul *ngIf="lang === 'de'">
+                <li>SpaceX - RIIIESEN  Fan, inspirieren mich seit Jahren und bringen mir Hoffnung auf die Zukunft</li>
+                <li>Irgndwann mal in der Space Branche Arbeiten zu dürfen, wäre ein ernsthafter Traum!!</li>
+            </ul>
+            <ul *ngIf="lang === 'en'">
+                <li>SpaceX - HUUUUGE Fan, they inspire me day after day to bring out the best in me and hope for the future</li>
+                <li>Someday, I would really like to work in the Space Industry - either Software or Hardware</li>
+            </ul>
+
+            <p class="SubChapterHeader">Gaming</p>
+            <ul>
+                <li>Overwatch <a href="https://www.overbuff.com/players/FrikyMediaLP-2647" target="_blank">FrikyMediaLP-2647</a></li>
+                <li>Steam <a href="https://steamcommunity.com/id/FrikyMediaLP" target="_blank">@FrikyMediaLP</a></li>
+                <li>Live Streaming <a href="https://www.twitch.tv/frikymedialp" target="_blank">@FrikyMediaLP</a></li>
+            </ul>
+
+            <p class="SubChapterHeader">Social Media</p>
+            <ul>
+                <li>Twitter <a href="https://twitter.com/FrikyMediaLP" target="_blank">@FrikyMediaLP</a></li>
+                <li>Discord <a>FrikyMediaLP#7192</a></li>
+                <li>YouTube <a href="https://www.youtube.com/channel/UCkaQKWpz9n279Rs7BiDPwcw" target="_blank">@FrikyMediaLP</a></li>
+                <li>Twitch <a href="https://www.twitch.tv/frikymedialp" target="_blank">@FrikyMediaLP</a></li>
+                <li>Instagram <a href="https://www.instagram.com/frikymedialp" target="_blank">@FrikyMediaLP</a></li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<div #imageEnlargeWrapper id="imageEnlargeWrapper" (click)="hideEnlargedImage($event)" style="display: none;">
+    <img src="" alt="enlarged image" />
+</div>

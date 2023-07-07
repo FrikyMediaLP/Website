@@ -1,0 +1,4 @@
+<button class="loading" [disabled]="this.disabled || this.loading" [type]="type" (click)="onClick($event)">
+    <ng-content *ngIf="!loading"></ng-content>
+    <app-loading-ring *ngIf="loading"></app-loading-ring>
+</button> 

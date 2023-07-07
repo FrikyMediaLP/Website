@@ -1,0 +1,27 @@
+<footer class="wavyTop">
+    <div>
+        <div>
+            <ul>
+                <li><a routerLink="/">home</a></li>
+                <li><a routerLink="/socials">socials</a></li>
+                <li><a routerLink="/contact">{{ lang === 'de' ? 'kontakt' : 'contact' }}</a></li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li><a href="https://fontawesome.com/">icons</a></li>
+            </ul>
+        </div>
+        <div  class="langlist">
+            <ul>
+                <li *ngFor="let opt of lang_info"
+                    [ngClass]="{ 'highlighted': lang === opt.name }" 
+                    (click)="setLang(opt.name)"
+                >
+                    <span>{{opt.title}}</span>
+                    <img [alt]="opt.name" [src]="'https://raw.githubusercontent.com/hampusborgos/country-flags/main/png100px/' + opt.icon + '.png'" />
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>

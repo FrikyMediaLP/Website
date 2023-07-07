@@ -1,0 +1,40 @@
+.Project {
+    --headersize: 1;
+    display: grid;
+    grid-template-columns: auto 10rem;
+    grid-template-rows: auto auto;
+    grid-template-areas: "title image" "desc image";
+    grid-column-gap: 5rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: var(--color-dark);
+    position: relative;
+}
+
+.Project .ProjectTitle {
+    grid-area: title;
+    font-weight: bold;
+    font-size: calc(var(--headersize) * 3rem);
+    margin: 0;
+    border-bottom: 1px solid var(--accent);
+}
+
+.Project .ProjectDescription {
+    grid-area: desc;
+}
+
+.Project .ProjectImage {
+    grid-area: image;
+    position: absolute;
+    top: 50%;
+    translate: 0 -50%;
+    width: 10rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.Project .ProjectImage:hover {
+    border-color: var(--accent);
+}

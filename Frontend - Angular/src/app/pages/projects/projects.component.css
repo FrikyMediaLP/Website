@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'DotsAllForNow';
+    src: url('./../../../assets/DotsAllForNow.ttf');
+}
+
+h1 {
+    color: var(--accent);
+    padding-left: 1rem;
+    font-weight: 100;
+    text-transform: uppercase;
+}
+
+h1:not(:first-child) {
+    margin-top: 5rem;
+}
+
+.ProjectList {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-gap: 2rem;
+    padding: 1rem;
+}
+
+app-project-summary {
+    margin: 0 1rem;
+    display: block;
+}
+
+#imageEnlargeWrapper {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    cursor: pointer;
+    z-index: 5;
+    backdrop-filter: blur(10px);
+}
+
+#imageEnlargeWrapper img {
+    max-height: 80vh;
+    max-width: 80vw;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    cursor: default;
+    background-color: var(--color-dark);
+}

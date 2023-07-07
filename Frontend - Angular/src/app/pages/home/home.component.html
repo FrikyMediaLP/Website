@@ -1,0 +1,204 @@
+<div id="headerState" (click)="clickHeaderButton($event)" role="button" aria-label="Switch Background Images">
+    <fa-icon [icon]="headerstate"></fa-icon>
+</div>
+
+<header class="wavyBottom">
+    <div id="headerText" (mouseenter)="changeHeader()">
+        <div>
+            <p #tim>tim</p>
+            <img src="./../../../assets/frikyEZ_lowestRez_compact.webp" alt="FrikyMediaLP Profile Picture"/>
+            <p #klenk>klenk</p>
+        </div>
+        <p>[ &nbsp; Streamer, Programmer, Gamer &nbsp; ]</p>
+    </div>
+
+    <div class="cards">
+        <app-brand-icon [icon]="faTwitter" [size]="'4x'" [color]="'#1DA1F2'" [title]="'Twitter'" [link]="'https://www.twitter.com/frikymedialp'"></app-brand-icon>
+        <app-brand-icon [icon]="faTwitch" [size]="'4x'" [color]="'#9146FF'" [title]="'Twitch'" [link]="'https://www.twitch.tv/frikymedialp'"></app-brand-icon>
+        <app-brand-icon [icon]="faGithub" [size]="'4x'" [color]="'white'" [title]="'Github'" [link]="'https://www.github.com/frikymedialp'"></app-brand-icon>
+        <app-brand-icon [icon]="faYoutube" [size]="'4x'" [color]="'red'" [title]="'YouTube'" [link]="'https://www.youtube.com/frikymedialp'"></app-brand-icon>
+    </div>
+
+    <app-video 
+        #headerBackground 
+        id="headerBackground" 
+        source="./../../../assets/home/background.mp4"
+        [options]="[
+            './../../../assets/home/screenshot2.webp',
+            './../../../assets/home/screenshot60.webp',
+            './../../../assets/home/screenshot62.webp',
+            './../../../assets/home/screenshot70.webp',
+            './../../../assets/home/screenshot105.webp',
+            './../../../assets/home/screenshot136.webp',
+            './../../../assets/home/screenshot138.webp',
+            './../../../assets/home/screenshot143.webp',
+            './../../../assets/home/screenshot145.webp',
+            './../../../assets/home/screenshot150.webp',
+            './../../../assets/home/screenshot217.webp',
+            './../../../assets/home/screenshot251.webp',
+            './../../../assets/home/screenshot259.webp',
+            './../../../assets/home/screenshot272.webp',
+            './../../../assets/home/screenshot308.webp',
+            './../../../assets/home/screenshot325.webp',
+            './../../../assets/home/screenshot329.webp'
+        ]"
+        [static]="true"
+        [fullscreen]="true"
+    ></app-video>
+</header>
+
+<main>
+    <section>
+        <div *ngIf="lang === 'de'">
+            <p class="sectionheader">ÜBER MICH</p>
+            <p>Ich bin <b>Tim Klenk</b> - passionierter Programmierer, Gamer und Content-Creator auf YouTube, Twitter und Twitch.</p>
+            <p>Schon als Kind war ich von Technik begeistert! Habe schon früh mit Staubsaugern, Fernsehern, Telefonen und Computern gespielt - mir war klar: <b>Ich will irgendwann in die Tech-Branche!</b></p>
+            <p>Ich besuchte eine Technik-Fokusierte Realschule, ein Informatik-Dominiertes Gymnasium und began schlussendlich am Karlsruher Institute of Technology zu studieren! Parallel bastelte ich <b>dutzende Hobby Projekte</b> - von Computerspielen und WebTools bis Hardware Automatisierungen im Smart Home Stil - niemals stund ich vor einer Barriere, die ich nicht mit etwas Knobeln und meinem Wissensdrang überwinden konnte!</p>
+            <p>Auf Social Media (YouTube, Twitter, Twitch) teile ich seit über 10 Jahren meine Erfolge in Videospielen, Memes und meine kreativen Software Umsetzungen. Meine <b>Beiträge in Content-Creator-Communities</b> haben mich ebenfalls bekannt gemacht! Die Sätze "FrikyMediaLP? Ist der nicht Moderator bei XY?" oder "Friky, den kenn ich, der ist doch aus XY´s Chat!" </p>
+            <p>Jetzt befinde ich mich auf <b>Jobsuche im FrontEnd / FullStack Development</b> und bilde mich aktuell in den gängigen Frameworks weiter! Favourite ist aktuell Angular - i like it strict 😎</p>
+        </div>
+        <div *ngIf="lang === 'en'">
+            <p class="sectionheader">ABOUT ME</p>
+            <p>I am <b>Tim Klenk</b> - a passionate Programmer, Gamer and Content-Creator on YouTube, Twitter and Twitch.</p>
+            <p>Already as a child, I was fascinated by Tech and Electronics! I played with Vaccums, TVs, Telefones and Computers - it was clear: <b>I want to work in the Tech-Industry!</b></p>
+            <p>I went to a Handiwork focused Middleschool onto a IT dominated Highschool and began studying at the Karlsruhe Institute of Technology! Meanwhile I worked on <b>dozens of Hobby Projects</b> - from Videogames and WebTools to Hardware Automation in Form of a Smart Home System - nothing ever stood in my way, that i couldn´t overcome with enough research and dedication!</p>
+            <p>For over 10 years now, I am displaying my successes in Videogames, create Memes and share my creative programming Solutons on Social Media (YouTube, Twitter, Twitch). My <b>Contributions to Content-Creator-Communities</b> made me also famous! Phrases like "FrikyMediaLP? Isn´t that the Moderator of XY?" or "Friky, I know him! He´s from XY´s Chat!" </p>
+            <p>Now I am <b>looking for a Job in the FrontEnd / FullStack Development Sector</b> and currently explore the popular Frameworks on the market! Currently, my favourite is Angular - i like it strict 😎</p>
+        </div>
+    </section>
+
+    <section class="wavy frikybot">
+        <p class="sectionheader">FrikyBot</p>
+        <div class="frikybot_wrapper">
+            <div class="frikybot_description_wrapper">
+                <div *ngIf="lang === 'de'" class="frikybot_description">
+                    <p>FrikyBot ist mein Twitch Chat Bot, der meinen Livestream automatisiert. Über die letzten 4+ Jahre, habe ich im alleingang das Ziel gesetzt alle Funktionen herkömmlicher Bots (wie Nightbot, Moobot, StreamElements, usw.) unter ein Dach zu bringen. Von Commands und Alerts bis zu Statistiken und ChatModeration - alles Customizable und annpassbar an deinen Stream!</p>
+                    <p>OpenSource ermöglicht es einfach ThirdParty Features zu erstellen und zu verteilen - alles basiert auf einem Modularen System, um die Modifizierbarkeit zu erleichtern!</p>
+                    <p>FrikyBot befindet sich noch in der Beta ... aber ein Nutzerfreundliches UI und ein Full-Release stehten hoffentlich bald an!</p>
+                </div>
+                <div *ngIf="lang === 'en'" class="frikybot_description">
+                    <p>FrikyBot is my Twitch Chat Bot which automates my Livestream and Chat. Over the last 4+ years, I have been working on bringing together all of the general Bot Features (e.g. Nightbot, Moobot, StreamElements, ...). From Commands and Alerts to Stats and ChatModeration - everything customizable to your stream and preferences!</p>
+                    <p>OpenSource allows easy creation of ThirdParty Features - everything is based on a modular System, to help others realise their own ideas!</p>
+                    <p>FrikyBot is currently still in Beta ... but a userfriendly UI and Full-Release is, hopefully, not far away!</p>
+                </div>
+                <div class="frikybot_icon">
+                    <img src="./../../../assets/projects/frikybot/Logo01_3.webp" alt="FrikyBot Logo" />
+                </div>
+            </div>
+            <div class="frikybot_features">
+                <p>FEATURES</p>
+                <div class="three_cols">
+                    <div (mousemove)="frikybotHover($event)">
+                        <img src="./../../../assets/projects/frikybot/alerts_glass.PNG" alt="FrikyBot Feature: Alerts" />
+                        <p>Alerts</p>
+                        <div class="frikybot_hover"></div>
+                    </div>
+                    <div (mousemove)="frikybotHover($event)">
+                        <img src="./../../../assets/projects/frikybot/commands_glass.PNG" alt="FrikyBot Feature: Commands" />
+                        <p>Commands</p>
+                        <div class="frikybot_hover"></div>
+                    </div>
+                    <div (mousemove)="frikybotHover($event)">
+                        <img src="./../../../assets/projects/frikybot/emotes_glass.PNG" alt="FrikyBot Feature: FFZ / BTTV Support" />
+                        <p>FFZ / BTTV Support</p>
+                        <div class="frikybot_hover"></div>
+                    </div>
+                </div>
+                <div class="two_cols">
+                    <div (mousemove)="frikybotHover($event)">
+                        <img src="./../../../assets/projects/frikybot/stats1_glass.PNG" alt="FrikyBot Feature: Stats" />
+                        <img src="./../../../assets/projects/frikybot/stats2_glass.PNG" alt="FrikyBot Feature: Stats" />
+                        <p>Stats</p>
+                        <div class="frikybot_hover"></div>
+                    </div>
+                    <div (mousemove)="frikybotHover($event)">
+                        <img src="./../../../assets/projects/frikybot/packages_glass.PNG" alt="FrikyBot Feature: Package System" />
+                        <p>Package System</p>
+                        <div class="frikybot_hover"></div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="https://frikybot.de">{{ lang === 'de' ? 'FRIKYBOT BESUCHEN' : 'VISIT FRIKYBOT' }}</a>
+        </div>
+    </section>
+
+    <section>
+        <div>
+            <p class="sectionheader">{{ lang === 'de' ? 'ANDERE PROJEKTE' : 'OTHER PROJECTS' }}</p>
+            <div class="projects">
+                
+                <app-project-summary 
+                    (onImageClick)="showEnlargeImage('./../../assets/about/Bett_Cropped.webp')"
+                    [name]="'smarthome'"
+                    [title]="{ 
+                        '*': 'Smart Home Prototype'
+                    }"
+                    [img]="'./../../assets/about/Bett_Cropped_compact.webp'"
+                    [description]="{ 
+                        'de': [
+                            'Als Abschlussprojekt meines Abiturs habe ich ein Smart Home System mit verschiedenen Module und einem Server auf Arduinos gebaut. Diese Module wurden mit Ethernet Anschlussen versehen und kommunizierten so über das existierende Netzwerk des Hauses.',
+                            'Manche Module konnten über Sensoren Daten aus der Umgebung einlesen, verarbeiten und befehle an andere Module weitergeben. Andere Module konnten darauf Aktoren bewegen oder die gesammelten Daten anzeigen lassen.'
+                        ],
+                        'en': [
+                            'I built a Smart Home Prototype as my final exam project of my A Levels. This System contained multiple different modules based on one (or more) Arduinos, all linked together and to a central Hub Server using Ethernet / WiFi.',
+                            'Some Modules used sensors to collect real world data, others used information of other modules to activate motors or turn on lights and others displayed text or images of the current status.'
+                        ]
+                    }"
+                    [color]="'var(--color-light)'"
+                ></app-project-summary>
+                
+                <app-project-summary 
+                    (onImageClick)="showEnlargeImage('./../../assets/projects/hiwi/Logo_KIT.png')"
+                    [link]="'https://lx3.mint-kolleg.kit.edu/onlinekursphysik'"
+                    [headersize]="0.5"
+                    [title]="{ 
+                        'de': 'HiWi Job: FrontEnd Webentwicklung von prozedural generierten Physik Übungsaufgaben',
+                        'en': 'HiWi Job: FrontEnd Developer of procedural generated Physics Exams'
+                    }"
+                    [img]="'./../../assets/projects/hiwi/Logo_KIT.png'"
+                    [description]="{ 
+                        'de': [
+                            'Als Student habe ich ein Semester begleitend am MINT-Kolleg geholfen einen Online Brückenkurs für die Fachrichtung Physik zu erstellen.',
+                            'Ich war zuständig interaktive Textaufgaben mit zufälligen Zahlenwerten zu generieren. Konkret wurde ein Python Framework genutzt, das jede Aufgabe als Component verpackte, mithilfe von LaTeX meine zufälligen Textaufgaben in PDFs umwandelte und diese dann im Browser anzeigte.',
+                            'Hier habe ich gelernt mit großen Projekten und mehreren Teammitgliedern zu arbeiten.'
+                        ],
+                        'en': [
+                            'As a student, I worked along my 3rd Semester at the MINT-Kolleg to create an Online Physics Bridge Course.',
+                            'I was responsible for generating interactive text problems. To be exact, a Python Framework was used to encapsulate each text problem task into Components, that used LaTeX to translated my text problems into PDFs which could then be displayed in the browser.',
+                            'There I learned a lot about working with big Projects and multiple Teammembers.'
+                        ]
+                    }"
+                    [color]="'var(--color-light)'"
+                ></app-project-summary>
+            </div>
+            <a [routerLink]="'/projects'" style="float: right;">{{ lang === 'de' ? 'alle anzeigen' : 'show all' }}</a>
+        </div>
+    </section>
+
+    <section>
+        <div>
+            <p class="sectionheader">Social Media</p>
+            <app-icon-wheel
+                [center]="{ title: '@FrikyMediaLP', icon_url: './../../../assets/frikyEZ_lowestRez_compact.webp', color: 'var(--color-dark)' }"
+                [icons]="[
+                    { title: 'Twitter', icon_fa: faTwitter, link: 'https://twitter.com/frikymedialp', color: 'var(--brand-twitter)' },
+                    { title: 'Twitch', icon_fa: faTwitch, link: 'https://twitch.tv/frikymedialp', color: 'var(--brand-twitch)' },
+                    { title: 'YouTube', icon_fa: faYoutube, link: 'https://www.youtube.com/channel/UCkaQKWpz9n279Rs7BiDPwcw', color: 'var(--brand-youtube)' },
+                    { title: 'Instagram', icon_fa: faInstagram, link: 'https://www.instagram.com/frikymedialp/', color: 'var(--brand-instagram)' },
+                    { title: 'Github', icon_fa: faGithub, link: 'https://github.com/FrikyMediaLP', color: 'var(--brand-github)' },
+                    { title: 'Discord @FrikyMediaLP', icon_fa: faDiscord, router_link: '/socials', color: 'var(--brand-discord)' },
+                    { title: 'Overbuff', icon_url: './../../../assets/socials/overbuff.jpg', link: 'https://www.overbuff.com/players/FrikyMediaLP-2647', color: 'var(--brand-overbuff)' }
+                ]"
+            ></app-icon-wheel>
+        </div>
+    </section>
+</main>
+
+<!--
+    IMAGE ENLARGER
+-->
+
+<div #imageEnlargeWrapper id="imageEnlargeWrapper" (click)="hideEnlargedImage($event)" style="display: none;">
+    <img src="" alt="enlarged Image" />
+</div>

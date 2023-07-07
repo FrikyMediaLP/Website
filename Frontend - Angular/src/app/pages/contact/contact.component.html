@@ -1,0 +1,61 @@
+<app-output #output></app-output>
+
+<div class="divider">
+    <div>
+        <img src="./../../../assets/about/me_compact.webp" alt="Tim Klenk Frontshot"/>
+    </div>
+    <div>
+        <h1>{{ lang === 'de' ? 'Kontakt Anfrage stellen' : 'Sumbit Contact Request' }}</h1>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <input #topic formControlName="topic" [placeholder]="(lang === 'de' ? 'Thema' : 'Topic') + '*'" />
+            <input #email formControlName="email" placeholder="Email*" />
+            <input #message formControlName="message" [placeholder]="(lang === 'de' ? 'Nachricht' : 'Topic') + '*'" />
+            <app-loading-button #button [disabled]="form.invalid" type="submit" (onClick)="submit()">{{ lang === 'de' ? 'SENDEN' : 'SEND'}}</app-loading-button>
+        </form>
+    </div>
+</div>
+
+<ng-container *ngIf="!pending_loading && pending_contacts.length > 0">
+    <h1>{{ lang === 'de' ? 'Ausstehende Kontakt Anfragen' : 'Pending Contact Request' }}</h1>
+    <div class="requests" [ngClass]="{ 'authed': twitch.userData?.sub === '38921745' }">
+        <ng-container *ngFor="let req of pending_contacts">
+            <p>{{req.topic}}</p>
+            <p>{{req.email}}</p>
+            <p>{{req.message}}</p>
+            <p>{{toDate(req.time)}}</p>
+            <p class="archieve" (click)="archieve(req['_id'])" *ngIf="twitch.userData?.sub === '38921745'">
+                <fa-icon [icon]="faBoxArchive"></fa-icon>
+            </p>
+            <p class="remove" (click)="remove(req['_id'])">
+                <fa-icon [icon]="faTrash"></fa-icon>
+            </p>
+        </ng-container>
+    </div>
+</ng-container>
+
+<div class="requests loading" *ngIf="pending_loading">
+    <p>O</p>
+    <p>O</p>
+    <p>O</p>
+</div>
+
+<ng-container *ngIf="twitch.userData?.sub === '38921745' && !archieved_loading && archieved_contacts.length > 0">
+    <h1>{{ lang === 'de' ? 'Archivierte Kontakt Anfragen' : 'Archieved Contact Request'}}</h1>
+    <div class="requests archieved" *ngIf="!archieved_loading">
+        <ng-container *ngFor="let req of archieved_contacts">
+            <p>{{req.topic}}</p>
+            <p>{{req.email}}</p>
+            <p>{{req.message}}</p>
+            <p>{{toDate(req.time)}}</p>
+            <p>{{toDate(req.archieved_at)}}</p>
+            <p class="remove" (click)="remove(req['_id'])">
+                <fa-icon [icon]="faTrash"></fa-icon>
+            </p>
+        </ng-container>
+    </div>
+    <div class="requests loading" *ngIf="archieved_loading">
+        <p>O</p>
+        <p>O</p>
+        <p>O</p>
+    </div>
+</ng-container>

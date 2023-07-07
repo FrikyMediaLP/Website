@@ -1,0 +1,168 @@
+:host {
+    padding: 1rem;
+}
+
+/* FORM */
+.divider {
+    margin: 0 auto;
+    margin-top: 5rem;
+    margin-bottom: 20rem;
+    max-width: 150ch;
+    height: 23rem;
+    padding: 0 5rem;
+    display: flex;
+    gap: 5rem;
+}
+
+@media screen and (max-width: 1000px) {
+    .divider div:has(img) {
+        width: 0;
+    }
+}
+
+.divider div:has(img) {
+    max-width: fit-content;
+    height: calc(100% - 2rem);
+    margin-top: 3rem;
+    position: relative;
+}
+
+.divider div {
+    width: 100%;
+    height: 100%;
+}
+
+.divider img {
+    border-radius: 1rem;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.divider form {
+    display: grid;
+    grid-template-columns: auto;
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.divider input {
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border: 3px solid transparent;
+    outline: 2px solid transparent;
+}
+.divider input:last-of-type {
+    margin-bottom: 2rem;
+}
+
+.divider form input.ng-dirty.ng-invalid {
+    outline: 2px solid var(--accent);
+    color: red;
+}
+.divider form input.ng-dirty.ng-valid {
+    color: green;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+:host > h1 {
+    margin-top: 10rem;
+}
+
+
+/* REQUEST LIST */
+.requests {
+    margin: 2rem;
+    display: grid;
+    grid-template-columns: auto auto auto auto 50px;
+}
+.requests.authed {
+    grid-template-columns: auto auto auto auto 50px 50px;
+}
+.requests.archieved {
+    grid-template-columns: auto auto auto auto auto 50px;
+}
+
+
+.requests p {
+    color: #242424;
+    padding: 1rem;
+    border-left: 1px solid lightgray;
+    background-color: white;
+    text-align: center;
+    position: relative;
+}
+.requests p:nth-child(5n + 1) {
+    border-left: none;
+    text-transform: uppercase;
+}
+
+.requests fa-icon {
+    color: white;
+    font-size: 1.2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    transition: 500ms ease-out;
+}
+
+.requests p.remove {
+    border: none;
+    cursor: pointer;
+    background-color: hsl(0deg 78% 33%);
+    transition: 100ms ease-in;
+}
+
+.requests p.remove:hover {
+    background-color: hsl(0deg 78% 53%);
+}
+
+.requests p.remove:hover fa-icon {
+    font-size: 1.5rem;
+    transition: none;
+}
+
+.requests p.archieve {
+    border: none;
+    cursor: pointer;
+    background-color: hsl(28deg 100% 61%);
+    transition: 100ms ease-in;
+}
+
+.requests p.archieve:hover {
+    background-color: hsl(83deg 100% 45%);
+}
+
+.requests p.archieve:hover fa-icon {
+    font-size: 1.5rem;
+    transition: none;
+}
+
+/* LOADING REQUEST LIST */
+.requests.loading {
+    grid-template-columns: auto;
+}
+
+.requests.loading p {
+    color: transparent;
+    background: #303030;
+    background: linear-gradient(110deg, #303030 8%, #404040 18%, #303030 33%);
+    animation: 3s shine linear infinite;
+    background-size: 200% 100%;
+    border-radius: 0.5rem;
+    border-color: transparent;
+}
+
+@keyframes shine {
+    from { 
+        background-position-x: 0%;
+    }
+    to {
+        background-position-x: -400%;
+    }
+}

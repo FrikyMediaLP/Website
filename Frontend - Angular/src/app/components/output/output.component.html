@@ -1,0 +1,4 @@
+<div role="alert" [hidden]="text === null" [ngClass]="{ 'WARNING': type === 'WARNING', 'ERROR': type === 'ERROR', 'INFO': type === 'INFO' }">
+    <div (click)="text = null" >x</div>
+    <div>{{type}}: {{text}}</div>
+</div>

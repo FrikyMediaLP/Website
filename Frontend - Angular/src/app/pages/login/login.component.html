@@ -1,0 +1,30 @@
+<app-output #output></app-output>
+
+<a #link id="link" href="">
+    <div id="hovercatcher" (mousemove)="onMouseMove($event)"></div>
+    <div>LOGIN {{ lang === 'de' ? 'MIT' : 'USING' }} TWITCH</div>
+    <fa-icon [icon]="faTwitch"></fa-icon>
+</a>
+
+<div class="user" [hidden]="user === null">
+    <div class="userdata">
+        <p class="loggedin">Logged in as:</p>
+        <p class="name" [title]="user?.preferred_username">{{ user?.preferred_username }}</p>
+        <p class="logout" (click)="logout()">logout</p>
+    </div>
+    <div class="userimg">
+        <img [src]="user?.picture" alt="User Profile Picture" />
+    </div>
+</div>
+
+
+<div class="user loading" [hidden]="!loading">
+    <div class="userdata">
+        <p class="loggedin">O</p>
+        <p class="name">O</p>
+        <p class="logout">O</p>
+    </div>
+    <div class="userimg">
+        <div></div>
+    </div>
+</div>
