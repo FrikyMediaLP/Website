@@ -6,6 +6,7 @@ import { OutputComponent } from 'src/app/components/output/output.component';
 import { CONTACT, ContactDBService } from 'src/app/services/contact-db.service';
 import { LangService } from 'src/app/services/lang.service';
 import { TwitchService } from 'src/app/services/twitch.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-contact',
@@ -56,12 +57,12 @@ export class ContactComponent {
 
     this.twitch.getUserUpdates().subscribe(user => {
       if(!user) this.archieved_contacts = [];
-      else if(user.sub === "38921745") this.refetchArchieved();
+      else if(this.isAdmin(user.sub)) this.refetchArchieved();
 
       this.changeDetectorRef.detectChanges();
     });
 
-    if(this.twitch.userData && this.twitch.userData.sub === "38921745") {
+    if(this.isAdmin(this.twitch.userData?.sub)) {
       this.refetchArchieved();
     }
 
@@ -95,7 +96,7 @@ export class ContactComponent {
     this.buttonRef.loading = true;
     this.pending_loading = true;
     this.changeDetectorRef.detectChanges();
-
+    
     this.contacts
       .postContactRequest(this.form.value as CONTACT)
       .subscribe(x => {
@@ -158,6 +159,9 @@ export class ContactComponent {
       });
   }
   
+  isAdmin(user_id: string ){
+    return environment.ADMIN_TWITCH_IDS.find(elt => elt === user_id) !== undefined;
+  }
   toDate(t: number){
     return new Date(t).toLocaleString(undefined, { 
       year: 'numeric',

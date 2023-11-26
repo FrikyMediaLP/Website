@@ -56,7 +56,8 @@ export const environment = {
     production: false, //true in environment.prod.ts
     TTV_CLIENT_ID: <YOUR TWITCH APPLICATION ID>,
     LOGIN_SERVER: 'http://localhost:<PORT>',
-    CONTACTS_SERVER: 'http://localhost:<PORT>'
+    CONTACTS_SERVER: 'http://localhost:<PORT>',
+    ADMIN_TWITCH_IDS: ['<USER_ID_1>', '<USER_ID_2>', ...]
 };
 ```
 
@@ -72,6 +73,7 @@ PORT="<PORT>"
 MAIL_LOGIN_EMAIL="<YOUR EMAIL>"
 MAIL_LOGIN_PW="<YOUR EMAIL PASSWORD>"
 MAIL_TO_EMAIL="<AN EMAIL TO SEND CONTACT REQUESTS TO>"
+TWITCH_USER_ID="<COMMA SEPARATED LIST OF TWITCH USER IDs>"
 ```
 
 ## Contributing

@@ -911,7 +911,7 @@ app.get('/api/contacts', async (req, res, next) => {
     if(req.headers.authorization) {
         try {
             let user = await verifyUser(req.headers.authorization.split(' ').pop());
-            if(user.sub === "38921745") query = {};
+            if(isAdmin(user.sub)) query = {};
         } catch (err) {
             
         }
@@ -980,7 +980,7 @@ app.put('/api/contacts', async (req, res, next) => {
 
     try {
         let user = await verifyUser(req.headers.authorization.split(' ').pop());
-        if(user.sub !== "38921745") return res.sendStatus(401);
+        if(isAdmin(user.sub)) return res.sendStatus(401);
     } catch (err) {
         return res.sendStatus(401);
     }
@@ -1001,7 +1001,7 @@ app.delete('/api/contacts', async (req, res, next) => {
     if(req.headers.authorization) {
         try {
             let user = await verifyUser(req.headers.authorization.split(' ').pop());
-            if(user.sub === "38921745") query = {};
+            if(isAdmin(user.sub)) query = {};
         } catch (err) {
             
         }
@@ -1012,7 +1012,7 @@ app.delete('/api/contacts', async (req, res, next) => {
     try {
         let found = await DB.find(query)
         await DB.remove(query);
-        if(found.length > 0 && found[0].mail_id !== null) sendEmail(RETRACTED_MAIL_HTML, null, found[0].mail_id);
+        if(found.length > 0 && found[0].mail_id !== null && !isAdmin(user.sub)) sendEmail(RETRACTED_MAIL_HTML, null, found[0].mail_id);
         res.sendStatus(200);
     } catch (err) {
         res.sendStatus(500);
@@ -1024,6 +1024,9 @@ app.use(express.static('public'));
 app.use('/*', (req, res) => res.sendFile(path.resolve('public/index.html')));
 
 //Util
+function isAdmin(user_id) {
+    return process.env.TWITCH_USER_ID.split(' ').join('').split(',').find(elt => elt === user_id) !== undefined;
+}
 async function verifyUser(token) {
     return new Promise((resolve, reject) => {
         let client = jwksClient({ jwksUri: TTV_JWK_URL });

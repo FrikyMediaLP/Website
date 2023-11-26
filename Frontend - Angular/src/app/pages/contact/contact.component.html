@@ -17,13 +17,13 @@
 
 <ng-container *ngIf="!pending_loading && pending_contacts.length > 0">
     <h1>{{ lang === 'de' ? 'Ausstehende Kontakt Anfragen' : 'Pending Contact Request' }}</h1>
-    <div class="requests" [ngClass]="{ 'authed': twitch.userData?.sub === '38921745' }">
+    <div class="requests" [ngClass]="{ 'authed': isAdmin(twitch.userData?.sub) }">
         <ng-container *ngFor="let req of pending_contacts">
             <p>{{req.topic}}</p>
             <p>{{req.email}}</p>
             <p>{{req.message}}</p>
             <p>{{toDate(req.time)}}</p>
-            <p class="archieve" (click)="archieve(req['_id'])" *ngIf="twitch.userData?.sub === '38921745'">
+            <p class="archieve" (click)="archieve(req['_id'])" *ngIf="isAdmin(twitch.userData?.sub)">
                 <fa-icon [icon]="faBoxArchive"></fa-icon>
             </p>
             <p class="remove" (click)="remove(req['_id'])">
@@ -39,7 +39,7 @@
     <p>O</p>
 </div>
 
-<ng-container *ngIf="twitch.userData?.sub === '38921745' && !archieved_loading && archieved_contacts.length > 0">
+<ng-container *ngIf="isAdmin(twitch.userData?.sub) && !archieved_loading && archieved_contacts.length > 0">
     <h1>{{ lang === 'de' ? 'Archivierte Kontakt Anfragen' : 'Archieved Contact Request'}}</h1>
     <div class="requests archieved" *ngIf="!archieved_loading">
         <ng-container *ngFor="let req of archieved_contacts">
