@@ -1,0 +1,53 @@
+Backend - NodeJS/node_modules/*
+Backend - NodeJS/public/*
+Backend - NodeJS/.env
+Backend - NodeJS/*.db
+Backend - NodeJS/contacts.db
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+Frontend - Angular/dist
+Frontend - Angular/tmp
+Frontend - Angular/out-tsc
+Frontend - Angular/bazel-out
+
+# Node
+Frontend - Angular/node_modules
+Frontend - Angular/npm-debug.log
+Frontend - Angular/yarn-error.log
+
+# IDEs and editors
+Frontend - Angular/.idea/
+Frontend - Angular/.project
+Frontend - Angular/.classpath
+Frontend - Angular/.c9/
+Frontend - Angular/*.launch
+Frontend - Angular/.settings/
+Frontend - Angular/*.sublime-workspace
+Frontend - Angular/.editorconfig
+
+# Visual Studio Code
+Frontend - Angular/.vscode/*
+Frontend - Angular/!.vscode/settings.json
+Frontend - Angular/!.vscode/tasks.json
+Frontend - Angular/!.vscode/launch.json
+Frontend - Angular/!.vscode/extensions.json
+Frontend - Angular/.history/*
+
+# Miscellaneous
+Frontend - Angular/.angular/cache
+Frontend - Angular/.sass-cache/
+Frontend - Angular/connect.lock
+Frontend - Angular/coverage
+Frontend - Angular/libpeerconnection.log
+Frontend - Angular/testem.log
+Frontend - Angular/typings
+
+# System files
+Frontend - Angular/.DS_Store
+Frontend - Angular/Thumbs.db
+
+#Website Files
+Frontend - Angular/src/assets/*
+Frontend - Angular/src/environments/*
