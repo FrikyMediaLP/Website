@@ -10,7 +10,7 @@
             <input #topic formControlName="topic" [placeholder]="(lang === 'de' ? 'Thema' : 'Topic') + '*'" />
             <input #email formControlName="email" placeholder="Email*" />
             <input #message formControlName="message" [placeholder]="(lang === 'de' ? 'Nachricht' : 'Topic') + '*'" />
-            <app-loading-button #button [disabled]="form.invalid" type="submit" (onClick)="submit()">{{ lang === 'de' ? 'SENDEN' : 'SEND'}}</app-loading-button>
+            <app-loading-button #button [disabled]="form.invalid || formSubmitted" type="submit" (onClick)="submit()">{{ lang === 'de' ? 'SENDEN' : 'SEND'}}</app-loading-button>
         </form>
     </div>
 </div>

@@ -43,6 +43,8 @@ export class ContactComponent {
       Validators.maxLength(1000)
     ])
   });
+
+  public formSubmitted = false;
   
   constructor(
     private langService: LangService, 
@@ -88,6 +90,8 @@ export class ContactComponent {
   }
   
   submit() {
+    if(this.formSubmitted) return;
+    this.formSubmitted = true;
     this.buttonRef.loading = true;
     this.pending_loading = true;
     this.changeDetectorRef.detectChanges();
@@ -107,6 +111,7 @@ export class ContactComponent {
         }
 
         this.buttonRef.loading = false;
+        this.formSubmitted = false;
         this.changeDetectorRef.detectChanges();
       });
   }
