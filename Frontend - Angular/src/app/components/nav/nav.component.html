@@ -1,5 +1,5 @@
-<nav>
-    <ul [ngClass]="{ 'inline': inline, 'scrolled': scrolled }">
+<nav [ngClass]="{ 'inline': inline, 'scrolled': scrolled }">
+    <ul>
         <li><a routerLink="/">home</a></li>
         <li><a routerLink="/about">{{ lang === 'de' ? 'über mich' : 'about' }}</a></li>
         <li><a routerLink="/skills">skills</a></li>
@@ -7,7 +7,7 @@
         <li><a routerLink="/socials">socials</a></li>
         <li><a routerLink="/contact">{{ lang === 'de' ? 'kontakt' : 'contact' }}</a></li>
         <li>
-            <a routerLink="/login" aria-label="login">
+            <a routerLink="/login" aria-label="login" [ngClass]="{ loggedin: user !== null }">
                 <img *ngIf="user !== null" [src]="user?.picture" alt="User Profile Picture" />
                 <fa-icon *ngIf="user === null" [icon]="faUser"></fa-icon>
             </a>

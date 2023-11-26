@@ -2,7 +2,15 @@ div {
     min-height: calc(100svh - 18rem);
 }
 
-:host:has(app-nav[ng-reflect-inline="false"]) div > * {
+:host div.inline {
+    margin-top: 0;
+}
+
+:host div:not(.inline) {
+    margin-top: 5rem;
+}
+
+:host div:not(.inline) > * {
     margin-top: 4rem;
     display: block;
 }

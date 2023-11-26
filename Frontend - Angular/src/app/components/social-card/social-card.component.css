@@ -10,10 +10,6 @@
     z-index: 1;
 }
 
-:host-context(body.lightmode) .card {
-    border-color: dimgray;
-}
-
 .card:focus-visible,
 .card:hover {
     outline: none;
@@ -38,7 +34,7 @@
     font-weight: bold;
 }
 
-.card .info:has(p:nth-child(2)) p:nth-child(1) {
+.card .info p:nth-child(1) {
     margin-bottom: 1rem;
 }
 

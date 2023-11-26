@@ -10,7 +10,7 @@
     border-radius: 0.5rem;
 }
 
-:host > a:not(:has(fa-icon)) {
+:host > a.noFAIcon {
     position: absolute;
     top: 0;
     left: 0;
@@ -35,15 +35,6 @@
 
 :host > a[href=""] {
     cursor: default;
-}
-
-:host-context(body.lightmode) :host > a {
-    background-color: var(--color-lightmode-light);
-}
-
-:host-context(body.lightmode) :host fa-icon,
-:host-context(body.lightmode) :host > a > div {
-    filter: invert(1);
 }
 
 :host > a:hover:after {

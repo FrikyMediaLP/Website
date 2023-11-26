@@ -4,6 +4,7 @@
     target="_blank"
     [title]="title || ''" 
     [ngStyle]="{ '--border-color': color, 'margin-bottom': icon ? '1rem' : '0' }"
+    [ngClass]="{ noFAIcon: !icon }"
 >
     <div style="z-index: 3; position: relative;">
         <ng-content></ng-content>

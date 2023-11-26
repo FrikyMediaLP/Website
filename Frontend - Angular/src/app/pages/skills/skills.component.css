@@ -2,10 +2,6 @@ p {
     color: white;
 }
 
-:host-context(body.lightmode) p {
-    color: black;
-}
-
 #LevelWrapper{
     display: grid;
     grid-template-columns: auto 15rem;

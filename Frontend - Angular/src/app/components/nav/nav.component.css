@@ -1,32 +1,32 @@
 :host {
     z-index: 40;
-}
-
-:host {
     display: block;
     position: sticky;
     top: 0;
     margin: 0 auto;
     margin-bottom: 2rem;
     width: 100%;
-    transition: background-color 500ms ease, border-color 500ms ease;
-    background-color: rgba(16, 16, 16, 0.4);
-    border-bottom: 1px solid rgba(var(--accent-numbers), 0.4);
-}
-
-:host:has(ul.inline:not(.scrolled)) {
-    background: none;
-    border-color: transparent;
-}
-
-:host:has(ul.scrolled) {
-    background-color: rgba(16, 16, 16, 1);
-    border-color: transparent;
 }
 
 :host:not(.inline) {
     position: fixed;
     width: 100vw;
+}
+
+nav {
+    transition: background-color 500ms ease, border-color 500ms ease;
+    background-color: rgba(16, 16, 16, 0.4);
+    border-bottom: 1px solid rgba(var(--accent-numbers), 0.4);
+}
+
+nav.inline:not(.scrolled) {
+    background: none;
+    border-color: transparent;
+}
+
+nav.scrolled {
+    background-color: rgba(16, 16, 16, 1);
+    border-color: transparent;
 }
 
 ul {
@@ -46,7 +46,7 @@ li {
     text-decoration: none;
 }
 
-a:not(:has(img)) {
+a:not(.loggedin) {
     color: white;
     font-weight: 300;
     text-decoration: none;

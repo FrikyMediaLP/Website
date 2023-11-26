@@ -15,12 +15,12 @@
 }
 
 @media screen and (max-width: 1000px) {
-    .divider div:has(img) {
+    .divider div:first-child {
         width: 0;
     }
 }
 
-.divider div:has(img) {
+.divider div:first-child {
     max-width: fit-content;
     height: calc(100% - 2rem);
     margin-top: 3rem;
@@ -96,7 +96,7 @@ h1 {
     text-align: center;
     position: relative;
 }
-.requests p:nth-child(5n + 1) {
+.requests p.topic {
     border-left: none;
     text-transform: uppercase;
 }

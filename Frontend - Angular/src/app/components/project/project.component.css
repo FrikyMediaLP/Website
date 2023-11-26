@@ -12,7 +12,7 @@
 .Project[tabindex="1"]:hover, 
 .Project[tabindex="1"]:focus-visible {
     border-style: solid;
-    border-color: var(--color-secondary);
+    border-color: white;
 }
 
 .Project .ProjectInfo {
@@ -26,7 +26,7 @@
     border-bottom: 1px solid lightgray;
 }
 .Project.show .ProjectInfo:hover {
-    border-bottom: 1px solid var(--color-primary);
+    border-bottom: 1px solid white;
 }
 
 .Project .ProjectInfo:focus-visible {
@@ -37,8 +37,8 @@
     cursor: pointer;
 }
 
-.Project:not(.show):has(.ProjectInfo[tabindex="1"]):hover {
-    border-color: var(--color-secondary);
+.Project:not(.show).has-details:hover {
+    border-color: white;
 }
 
 .Project .ProjectInfo .ProjectName {
@@ -128,7 +128,7 @@
 
 .Project .ProjectDetails .ProjectSection.ImageLeft img:hover,
 .Project .ProjectDetails .ProjectSection.ImageRight img:hover {
-    border-color: var(--color-secondary);
+    border-color: white;
 }
 
 .Project .ProjectDetails .ProjectSection.ImageList {
@@ -160,7 +160,7 @@
 }
 
 .Project .ProjectDetails .ProjectSection.ImageList .ImageListWrapper img:hover {
-    border-color: var(--color-secondary);
+    border-color: white;
 }
 
 .Project .WarningProjectCustomHTML {

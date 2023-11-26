@@ -1,4 +1,4 @@
-<div #wrapper [id]="hash" class="Project" [ngClass]="{ show: show }" >
+<div #wrapper [id]="hash" class="Project" [ngClass]="{ show: show, 'has-details': project.details }" >
     <div class="ProjectInfo" 
         (click)="details && toggleProject($event)" 
         (keypress)="details && toggleProject($event)"

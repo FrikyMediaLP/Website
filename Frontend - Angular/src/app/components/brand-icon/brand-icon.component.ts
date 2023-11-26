@@ -10,7 +10,7 @@ import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
 export class BrandIconComponent {
   @Input() icon: IconDefinition;
   @Input() size: SizeProp;
-  @Input() color: string = 'var(--color-secondary)';
+  @Input() color: string = 'white';
   @Input() title: string;
   @Input() link: string;
 

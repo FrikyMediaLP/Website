@@ -19,7 +19,7 @@
     <h1>{{ lang === 'de' ? 'Ausstehende Kontakt Anfragen' : 'Pending Contact Request' }}</h1>
     <div class="requests" [ngClass]="{ 'authed': isAdmin(twitch.userData?.sub) }">
         <ng-container *ngFor="let req of pending_contacts">
-            <p>{{req.topic}}</p>
+            <p class="topic">{{req.topic}}</p>
             <p>{{req.email}}</p>
             <p>{{req.message}}</p>
             <p>{{toDate(req.time)}}</p>
