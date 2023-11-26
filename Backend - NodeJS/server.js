@@ -957,7 +957,7 @@ app.post('/api/contacts', async (req, res, next) => {
 
         try {
             await DB.insert(body, { '_id': id }, { upsert: true });
-            sendEmail(MAIL_HTML(body), id);
+            sendEmail(NEW_MAIL_HTML(body), id);
             return res.sendStatus(200);
         } catch (err) {
             if (err.message === 'Element already exists.') same_id = true;
