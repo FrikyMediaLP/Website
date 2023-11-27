@@ -41,9 +41,9 @@ export class IconWheelComponent {
 
     //ease in / out
     if(this.slow) {
-      this.duration = this.duration + elapsed;
+      this.duration *= 1.01;
 
-      if(this.duration > 300) this.duration = 5000000;
+      if(this.duration > 300) this.duration = Infinity;
     }
     else {
       if(this.duration > 500) this.duration = 100;
@@ -51,21 +51,13 @@ export class IconWheelComponent {
     }
 
     //rotate
-    let last_pos = this.pos;
-    this.pos += elapsed / this.duration;
+    if(this.duration !== Infinity) this.pos += elapsed / this.duration;
   
     //clamp to 0-360
     if(this.pos > 360) this.pos = 0;
 
-    //animate between steps
-    this.wrapperRef.nativeElement.animate([
-      { '--phi_offset': last_pos },
-      { '--phi_offset': this.pos }
-    ], {
-      duration: elapsed * 2,
-      iterations: 1
-    });
-
+    this.wrapperRef.nativeElement.style.setProperty('--phi_offset', this.pos.toFixed(2));
+    
     //retrigger callback
     window.requestAnimationFrame((timestamp) => this.animate(timestamp));
   }

@@ -40,7 +40,6 @@
 }
 .icon[href] {
     cursor: pointer;
-    transition: 500ms ease;
 }
 .icon[href]:hover {
     padding: 1rem !important;
