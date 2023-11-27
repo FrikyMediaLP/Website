@@ -177,7 +177,7 @@ export class HomeComponent {
     let elt = this.imageEnlargerWrapper.nativeElement;
     while(elt.tagName !== "BODY") elt = elt.parentElement;
     elt.style.overflow = 'hidden';
-    elt.style.paddingRight = '20px';
+    elt.style.paddingRight = (window.innerWidth - document.documentElement.clientWidth) + 'px';
   }
   hideEnlargedImage(e: MouseEvent){
     if((e.target as Element).tagName === 'IMG') {
