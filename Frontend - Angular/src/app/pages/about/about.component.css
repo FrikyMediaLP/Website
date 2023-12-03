@@ -117,11 +117,22 @@ section ul li {
     z-index: 2;
     overflow: hidden;
     border-radius: 0.5rem;
-    border: 2px solid rgba(var(--accent-numbers), 0.5);
+    border: none;
 }
 
 #SteamProfile:hover iframe {
     border-color: var(--accent);
+
+}
+
+/* 
+    Firefox does not support iframe marginwidth / marginheight ... so we cant use borders around it!
+    Using :has selector to detect non Firefox Browsers ...
+*/
+@supports selector(:has(*)) {
+    #SteamProfile iframe {
+        border: 2px solid rgba(var(--accent-numbers), 0.5);
+    }
 }
 
 /* IMAGE ENLARGER */
