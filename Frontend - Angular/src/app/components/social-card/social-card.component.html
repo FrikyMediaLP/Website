@@ -1,5 +1,6 @@
-<a [attr.href]="link" class="card" [ngStyle]="color" (mouseenter)="replayVideo()">
+<a [attr.href]="link" class="card" [ngStyle]="color" (mouseenter)="replayVideo()" [ngClass]="{ alternateIcons: icon && alternateIcon, alternate: useAlternateIcon, firstItteration }">
     <fa-icon *ngIf="icon" [icon]="icon"></fa-icon>
+    <fa-icon *ngIf="alternateIcon" [icon]="alternateIcon"></fa-icon>
     <img *ngIf="icon_URL" [src]="icon_URL" [alt]="name" />
     <div class="info">
         <p>{{name}}</p>

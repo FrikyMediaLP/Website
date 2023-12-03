@@ -1,4 +1,4 @@
-<div class="wrapper" #wrapper (mouseenter)="slow = true;" (mouseleave)="slow = false;">
+<div class="wrapper" #wrapper (mouseenter)="slow = true;" (mouseleave)="slow = false;" [ngClass]="{ alternate: useAlternateIcon, firstItteration }">
     <div 
         *ngIf="center"
         class="icon center" [ngStyle]="{ '--color': center.color }">
@@ -14,9 +14,11 @@
             target="_blank"
             [title]="icon.title"
             [ngStyle]="{ '--color': icon.color, '--phi': (i / icons.length) * 360 }"
+            [ngClass]="{ alternateIcons: icon.icon_fa && icon.icon_alternative, alternate: useAlternateIcon, firstItteration }"
         >
             <img *ngIf="icon.icon_url" [src]="icon.icon_url" [alt]="icon.title" />
             <fa-icon *ngIf="icon.icon_fa" [icon]="icon.icon_fa"></fa-icon>
+            <fa-icon *ngIf="icon.icon_alternative" [icon]="icon.icon_alternative"></fa-icon>
         </a>
         <a
             *ngIf="icon.router_link"
@@ -28,6 +30,7 @@
         >
             <img *ngIf="icon.icon_url" [src]="icon.icon_url" [alt]="icon.title" />
             <fa-icon *ngIf="icon.icon_fa" [icon]="icon.icon_fa"></fa-icon>
+            <fa-icon *ngIf="icon.icon_alternative" [icon]="icon.icon_alternative"></fa-icon>
         </a>
     </ng-container>
 </div>

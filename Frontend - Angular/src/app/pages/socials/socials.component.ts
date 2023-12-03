@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { faTwitch, faYoutube, faTwitter, faDiscord, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faTwitch, faYoutube, faTwitter, faDiscord, faInstagram, faGithub, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -11,6 +11,7 @@ export class SocialsComponent {
   faTwitch = faTwitch;
   faYoutube = faYoutube;
   faTwitter = faTwitter;
+  faXTwitter = faXTwitter;
   faDiscord = faDiscord;
   faInstagram = faInstagram;
   faGithub = faGithub;

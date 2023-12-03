@@ -60,6 +60,42 @@
     color: white;
 }
 
+a.alternateIcons fa-icon {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+a.alternateIcons fa-icon:nth-of-type(2) {
+    opacity: 0;
+}
+
+a.alternateIcons.alternate fa-icon:nth-of-type(1) {
+    opacity: 0;
+    animation: jitter 0.2s;
+    animation-iteration-count: 3;
+    animation-direction: normal;
+}
+
+a.alternateIcons.alternate fa-icon:nth-of-type(2) {
+    opacity: 1;
+    animation: jitter 0.2s;
+    animation-iteration-count: 3;
+    animation-direction: reverse;
+}
+
+a.alternateIcons:not(.alternate):not(.firstItteration) fa-icon:nth-of-type(1) {
+    opacity: 1;
+    animation: jitter2 0.2s;
+    animation-iteration-count: 3;
+    animation-direction: normal;
+}
+
+a.alternateIcons:not(.alternate):not(.firstItteration) fa-icon:nth-of-type(2) {
+    opacity: 0;
+    animation: jitter2 0.2s;
+    animation-iteration-count: 3;
+    animation-direction: reverse;
+}
+
 .BrandIconHoverCatcher {
     display: block;
     width: 100%;
@@ -68,4 +104,52 @@
     top: 0;
     left: 0;
     z-index: 5;
+}
+
+@keyframes jitter {
+    0% {
+        transform: skew(0deg) translate(0px, 0px);
+    }
+    17% {
+        transform: skew(0.5deg) translate(-5px, 0px);
+    }
+    32% {
+        transform: skew(0.5deg) translate(0px, 0px);
+    }
+    48% {
+        transform: skew(0deg) translate(0px, 0px);
+    }
+    63% {
+        transform: skew(-0.5deg) translate(5px, 0px);
+    }
+    79% {
+        transform: skew(-0.5deg) translate(0px, 0px);
+    }
+    100% {
+        transform: skew(0deg) translate(0px, 0px);
+    }
+}
+
+@keyframes jitter2 {
+    0% {
+        transform: skew(0deg) translate(0px, 0px);
+    }
+    17% {
+        transform: skew(0.5deg) translate(-5px, 0px);
+    }
+    32% {
+        transform: skew(0.5deg) translate(0px, 0px);
+    }
+    48% {
+        transform: skew(0deg) translate(0px, 0px);
+    }
+    63% {
+        transform: skew(-0.5deg) translate(5px, 0px);
+    }
+    79% {
+        transform: skew(-0.5deg) translate(0px, 0px);
+    }
+    100% {
+        transform: skew(0deg) translate(0px, 0px);
+    }
 }

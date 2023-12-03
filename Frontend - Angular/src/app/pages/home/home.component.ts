@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
-import { faTwitter, faTwitch, faGithub, faYoutube, faInstagram, faDiscord } from '@fortawesome/free-brands-svg-icons';
+import { faTwitter, faTwitch, faGithub, faYoutube, faInstagram, faDiscord, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faChevronLeft, faChevronRight, faImages, faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { Subject, takeUntil } from 'rxjs';
 import { VideoComponent } from 'src/app/components/video/video.component';
@@ -14,6 +14,7 @@ import { LangService } from 'src/app/services/lang.service';
 })
 export class HomeComponent {
   faTwitter = faTwitter;
+  faXTwitter = faXTwitter;
   faTwitch = faTwitch;
   faGithub = faGithub;
   faYoutube = faYoutube;

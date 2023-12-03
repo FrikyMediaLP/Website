@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
 
+const ALTERNATE_DELAY = 10000;
+
 @Component({
   selector: 'app-brand-icon',
   templateUrl: './brand-icon.component.html',
@@ -9,10 +11,23 @@ import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
 })
 export class BrandIconComponent {
   @Input() icon: IconDefinition;
+  @Input() alternateIcon: IconDefinition;
   @Input() size: SizeProp;
   @Input() color: string = 'white';
   @Input() title: string;
   @Input() link: string;
+
+  firstItteration: boolean = true;
+  useAlternateIcon: boolean = false;
+
+  ngAfterViewInit() {
+    if(!this.alternateIcon) return;
+
+    setInterval(() => {
+      this.firstItteration = false;
+      this.useAlternateIcon = this.useAlternateIcon === false;
+    }, ALTERNATE_DELAY);
+  }
 
   onMouseMove(e: MouseEvent){
     let elt = e.target as HTMLElement;

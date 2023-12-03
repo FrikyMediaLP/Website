@@ -5,12 +5,14 @@ export interface ICON {
   title: string,
   icon_url?: string,
   icon_fa?: IconProp,
+  icon_alternative?: IconProp,
   link?: string,
   router_link?: string,
   color: string
 }
 
 const DURATION = 60;
+const ALTERNATE_DELAY = 10000;
 
 @Component({
   selector: 'app-icon-wheel',
@@ -26,9 +28,16 @@ export class IconWheelComponent {
   duration: number = DURATION;
   last: number = null;
   pos: number = 0;
+  firstItteration: boolean = true;
+  useAlternateIcon: boolean = false;
 
   ngAfterViewInit() {
     window.requestAnimationFrame((timestamp) => this.animate(timestamp));
+    
+    setInterval(() => {
+      this.firstItteration = false;
+      this.useAlternateIcon = this.useAlternateIcon === false;
+    }, ALTERNATE_DELAY);
   }
   animate(timestamp: number) {
     const elapsed = timestamp - this.last;
