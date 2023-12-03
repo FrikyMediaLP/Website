@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { faJs, faCss3Alt, faHtml5, faNode, faJava, faGitAlt, faPython, faAngular, faVuejs, faReact, faLinux } from '@fortawesome/free-brands-svg-icons';
+import { faJs, faCss3Alt, faHtml5, faNode, faJava, faGitAlt, faPython, faAngular, faVuejs, faReact, faLinux, faPhp, faTypo3 } from '@fortawesome/free-brands-svg-icons';
 import { LangService } from 'src/app/services/lang.service';
 
 @Component({
@@ -19,6 +19,8 @@ export class SkillsComponent {
   faVuejs = faVuejs;
   faReact = faReact;
   faLinux = faLinux;
+  faPhp = faPhp;
+  faTypo3 = faTypo3;
   
   @ViewChild('skillelevelhint') hint: ElementRef;
   
