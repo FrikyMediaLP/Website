@@ -98,6 +98,32 @@ section ul li {
     border-color: var(--accent);
 }
 
+/* Steam Profile */
+#SteamProfile {
+    float: right;
+    position: relative;
+    translate: 0 -2rem;
+}
+
+#SteamProfile .dreamcatcher {
+    position: absolute; 
+    height: 100%; 
+    width: 100%; 
+    z-index: 1;
+}
+
+#SteamProfile iframe {
+    width: fit-content;
+    z-index: 2;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    border: 2px solid rgba(var(--accent-numbers), 0.5);
+}
+
+#SteamProfile:hover iframe {
+    border-color: var(--accent);
+}
+
 /* IMAGE ENLARGER */
 #imageEnlargeWrapper {
     width: 100vw;
