@@ -15,9 +15,10 @@ const DURATION = 60;
 const ALTERNATE_DELAY = 10000;
 
 @Component({
-  selector: 'app-icon-wheel',
-  templateUrl: './icon-wheel.component.html',
-  styleUrls: ['./icon-wheel.component.css']
+    selector: 'app-icon-wheel',
+    templateUrl: './icon-wheel.component.html',
+    styleUrls: ['./icon-wheel.component.css'],
+    standalone: false
 })
 export class IconWheelComponent {
   @ViewChild('wrapper') wrapperRef: ElementRef;

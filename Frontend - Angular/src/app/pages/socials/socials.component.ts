@@ -3,9 +3,10 @@ import { faTwitch, faYoutube, faTwitter, faDiscord, faInstagram, faGithub, faXTw
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-socials',
-  templateUrl: './socials.component.html',
-  styleUrls: ['./socials.component.css']
+    selector: 'app-socials',
+    templateUrl: './socials.component.html',
+    styleUrls: ['./socials.component.css'],
+    standalone: false
 })
 export class SocialsComponent {
   faTwitch = faTwitch;

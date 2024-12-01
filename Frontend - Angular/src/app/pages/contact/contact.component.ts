@@ -9,11 +9,12 @@ import { TwitchService } from 'src/app/services/twitch.service';
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'app-contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css'],
-  providers: [ContactDBService],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-contact',
+    templateUrl: './contact.component.html',
+    styleUrls: ['./contact.component.css'],
+    providers: [ContactDBService],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ContactComponent {
   faTrash = faTrashCan;

@@ -45,10 +45,11 @@ export interface PROJECT_SECTION_IMAGE {
 }
 
 @Component({
-  selector: 'app-project',
-  templateUrl: './project.component.html',
-  styleUrls: ['./project.component.css'],
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-project',
+    templateUrl: './project.component.html',
+    styleUrls: ['./project.component.css'],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class ProjectComponent implements OnInit, AfterViewInit {
   @Input() project: PROJECT;

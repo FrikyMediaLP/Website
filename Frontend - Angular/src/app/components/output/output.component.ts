@@ -1,9 +1,10 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-output',
-  templateUrl: './output.component.html',
-  styleUrls: ['./output.component.css']
+    selector: 'app-output',
+    templateUrl: './output.component.html',
+    styleUrls: ['./output.component.css'],
+    standalone: false
 })
 export class OutputComponent {
   type: 'ERROR' | 'INFO' | 'WARNING' | null = "ERROR";

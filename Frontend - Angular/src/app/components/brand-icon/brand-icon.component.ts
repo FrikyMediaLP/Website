@@ -5,9 +5,10 @@ import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
 const ALTERNATE_DELAY = 10000;
 
 @Component({
-  selector: 'app-brand-icon',
-  templateUrl: './brand-icon.component.html',
-  styleUrls: ['./brand-icon.component.css']
+    selector: 'app-brand-icon',
+    templateUrl: './brand-icon.component.html',
+    styleUrls: ['./brand-icon.component.css'],
+    standalone: false
 })
 export class BrandIconComponent {
   @Input() icon: IconDefinition;

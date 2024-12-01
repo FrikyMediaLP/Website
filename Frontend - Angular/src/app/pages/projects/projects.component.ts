@@ -4,9 +4,10 @@ import { PROJECT, ProjectComponent } from 'src/app/components/project/project.co
 import { LangService } from 'src/app/services/lang.service';
 
 @Component({
-  selector: 'app-projects',
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css']
+    selector: 'app-projects',
+    templateUrl: './projects.component.html',
+    styleUrls: ['./projects.component.css'],
+    standalone: false
 })
 export class ProjectsComponent {
   @ViewChild('header') header: ElementRef;

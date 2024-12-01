@@ -5,9 +5,10 @@ import { LangService } from 'src/app/services/lang.service';
 import { TwitchService, USER } from 'src/app/services/twitch.service';
 
 @Component({
-  selector: 'app-nav',
-  templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css']
+    selector: 'app-nav',
+    templateUrl: './nav.component.html',
+    styleUrls: ['./nav.component.css'],
+    standalone: false
 })
 export class NavComponent {
   @Input() inline: boolean = false;

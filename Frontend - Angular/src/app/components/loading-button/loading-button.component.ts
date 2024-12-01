@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-loading-button',
-  templateUrl: './loading-button.component.html',
-  styleUrls: ['./loading-button.component.css']
+    selector: 'app-loading-button',
+    templateUrl: './loading-button.component.html',
+    styleUrls: ['./loading-button.component.css'],
+    standalone: false
 })
 export class LoadingButtonComponent {
   @Input() type: string = null;

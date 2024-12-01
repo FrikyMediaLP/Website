@@ -3,9 +3,10 @@ import { faJs, faCss3Alt, faHtml5, faNode, faJava, faGitAlt, faPython, faAngular
 import { LangService } from 'src/app/services/lang.service';
 
 @Component({
-  selector: 'app-skills',
-  templateUrl: './skills.component.html',
-  styleUrls: ['./skills.component.css']
+    selector: 'app-skills',
+    templateUrl: './skills.component.html',
+    styleUrls: ['./skills.component.css'],
+    standalone: false
 })
 export class SkillsComponent {
   faJs = faJs;

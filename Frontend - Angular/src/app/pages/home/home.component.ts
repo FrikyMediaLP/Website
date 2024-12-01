@@ -7,10 +7,11 @@ import { CALLBACK_RESPONSE, CustomIntersectionObserverService } from 'src/app/se
 import { LangService } from 'src/app/services/lang.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
-  providers: [CustomIntersectionObserverService]
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css'],
+    providers: [CustomIntersectionObserverService],
+    standalone: false
 })
 export class HomeComponent {
   faTwitter = faTwitter;

@@ -8,9 +8,10 @@ export interface Color {
 const ALTERNATE_DELAY = 10000;
 
 @Component({
-  selector: 'app-social-card',
-  templateUrl: './social-card.component.html',
-  styleUrls: ['./social-card.component.css']
+    selector: 'app-social-card',
+    templateUrl: './social-card.component.html',
+    styleUrls: ['./social-card.component.css'],
+    standalone: false
 })
 export class SocialCardComponent {
   @Input() name: string;

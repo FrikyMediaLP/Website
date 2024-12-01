@@ -5,10 +5,11 @@ import { CALLBACK_RESPONSE, CustomIntersectionObserverService } from 'src/app/se
 import { LangService } from 'src/app/services/lang.service';
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css'],
-  providers: [CustomIntersectionObserverService]
+    selector: 'app-about',
+    templateUrl: './about.component.html',
+    styleUrls: ['./about.component.css'],
+    providers: [CustomIntersectionObserverService],
+    standalone: false
 })
 export class AboutComponent {
   faJs = faJs;

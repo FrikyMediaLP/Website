@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { LangService } from 'src/app/services/lang.service';
 
 @Component({
-  selector: 'app-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css']
+    selector: 'app-footer',
+    templateUrl: './footer.component.html',
+    styleUrls: ['./footer.component.css'],
+    standalone: false
 })
 export class FooterComponent {
   constructor(private langService: LangService) {}

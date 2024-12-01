@@ -10,9 +10,10 @@ interface LANGUAGES {
 }
 
 @Component({
-  selector: 'app-project-summary',
-  templateUrl: './project-summary.component.html',
-  styleUrls: ['./project-summary.component.css']
+    selector: 'app-project-summary',
+    templateUrl: './project-summary.component.html',
+    styleUrls: ['./project-summary.component.css'],
+    standalone: false
 })
 export class ProjectSummaryComponent {
   @Input() name: string = '';
