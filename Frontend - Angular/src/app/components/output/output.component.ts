@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, output } from '@angular/core';
 
 @Component({
     selector: 'app-output',
@@ -9,7 +9,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class OutputComponent {
   type: 'ERROR' | 'INFO' | 'WARNING' | null = "ERROR";
   text: string | null = null;
-  @Output('onClick') onClickEmitter = new EventEmitter();
+  readonly onClickEmitter = output({ alias: 'onClick' });
 
   trigger(type: 'ERROR' | 'INFO' | 'WARNING', message: string){
     this.type = type;

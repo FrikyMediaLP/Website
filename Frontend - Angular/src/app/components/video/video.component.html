@@ -1,7 +1,7 @@
 <video
-    *ngIf="source && !static"
-    [ngStyle]="{ 'width': (fullscreen ? 'unset' : '100%') }"
+    *ngIf="source() && !static"
+    [ngStyle]="{ 'width': (fullscreen() ? 'unset' : '100%') }"
     #video muted autoplay loop onloadedmetadata="this.muted = true; this.play();" (error)="videoError($event)">
-    <source [src]="source" (error)="videoError($event)" />
+    <source [src]="source()" (error)="videoError($event)" />
 </video>
 <img #img *ngIf="(!source && poster) || static" [src]="poster" alt="BackgroundImage">

@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ElementRef, viewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { PROJECT, ProjectComponent } from 'src/app/components/project/project.component';
@@ -15,8 +15,8 @@ interface LANGOPTIONS {
     standalone: false
 })
 export class ProjectsComponent {
-  @ViewChild('header') header: ElementRef;
-  @ViewChild('imageEnlargeWrapper') imageEnlargerWrapper: ElementRef;
+  readonly header = viewChild<ElementRef>('header');
+  readonly imageEnlargerWrapper = viewChild<ElementRef>('imageEnlargeWrapper');
 
   projects: Array<PROJECT> = [
     { name: { '*': 'Website' }, hash: 'website', status: 100, start: 'Feb 2023', end: 'ETA JUL 2023', active: true, details: [
@@ -617,26 +617,28 @@ export class ProjectsComponent {
   }
 
   closeOtherProjects(project: ProjectComponent) {
-    if(this.visible_project && this.visible_project !== project && this.visible_project.wrapper.nativeElement.classList.contains('show')) this.visible_project.hideProject();
+    if(this.visible_project && this.visible_project !== project && this.visible_project.wrapper().nativeElement.classList.contains('show')) this.visible_project.hideProject();
     this.visible_project = project;
   }
 
   showEnlargeImage(url: string){
-    this.imageEnlargerWrapper.nativeElement.querySelector('img').src = url;
-    this.imageEnlargerWrapper.nativeElement.querySelector('img').style.backgroundColor = 'var(--color-dark)';
-    this.imageEnlargerWrapper.nativeElement.style.display = 'block';
+    this.imageEnlargerWrapper().nativeElement.querySelector('img').src = url;
+    this.imageEnlargerWrapper().nativeElement.querySelector('img').style.backgroundColor = 'var(--color-dark)';
+    const imageEnlargerWrapper = this.imageEnlargerWrapper();
+    imageEnlargerWrapper.nativeElement.style.display = 'block';
 
-    let elt = this.imageEnlargerWrapper.nativeElement;
+    let elt = imageEnlargerWrapper.nativeElement;
     while(elt.tagName !== "BODY") elt = elt.parentElement;
     elt.style.overflow = 'hidden';
     elt.style.paddingRight = (window.innerWidth - document.documentElement.clientWidth) + 'px';
   }
   showEnlargeImageEvent(e: MouseEvent){
-    this.imageEnlargerWrapper.nativeElement.querySelector('img').src = (e.target as any).src;
-    this.imageEnlargerWrapper.nativeElement.querySelector('img').style.backgroundColor = 'var(--color-dark)';
-    this.imageEnlargerWrapper.nativeElement.style.display = 'block';
+    this.imageEnlargerWrapper().nativeElement.querySelector('img').src = (e.target as any).src;
+    this.imageEnlargerWrapper().nativeElement.querySelector('img').style.backgroundColor = 'var(--color-dark)';
+    const imageEnlargerWrapper = this.imageEnlargerWrapper();
+    imageEnlargerWrapper.nativeElement.style.display = 'block';
 
-    let elt = this.imageEnlargerWrapper.nativeElement;
+    let elt = imageEnlargerWrapper.nativeElement;
     while(elt.tagName !== "BODY") elt = elt.parentElement;
     elt.style.overflow = 'hidden';
     elt.style.paddingRight = (window.innerWidth - document.documentElement.clientWidth) + 'px';
@@ -649,9 +651,10 @@ export class ProjectsComponent {
       return;
     }
 
-    this.imageEnlargerWrapper.nativeElement.style.display = 'none';
+    const imageEnlargerWrapper = this.imageEnlargerWrapper();
+    imageEnlargerWrapper.nativeElement.style.display = 'none';
 
-    let elt = this.imageEnlargerWrapper.nativeElement;
+    let elt = imageEnlargerWrapper.nativeElement;
     while(elt.tagName !== "BODY") elt = elt.parentElement;
     elt.style.overflow = 'unset';
     elt.style.paddingRight = 'unset';

@@ -1,24 +1,24 @@
 <a
-    [href]="link"
+    [href]="link()"
     tabindex="-1"
     target="_blank"
-    [title]="title || ''" 
-    [ngStyle]="{ '--border-color': color, 'margin-bottom': icon ? '1rem' : '0' }"
+    [title]="title() || ''" 
+    [ngStyle]="{ '--border-color': color(), 'margin-bottom': icon ? '1rem' : '0' }"
     [ngClass]="{ noFAIcon: !icon, alternateIcons: icon && alternateIcon, alternate: useAlternateIcon, firstItteration }"
 >
     <div style="z-index: 3; position: relative;">
         <ng-content></ng-content>
     </div>
     <fa-icon 
-        *ngIf="icon" 
-        [icon]="icon" 
-        [size]="size"
+        *ngIf="icon()" 
+        [icon]="icon()" 
+        [size]="size()"
         (mousemove)="onMouseMove($event)"
     ></fa-icon>
     <fa-icon 
-        *ngIf="alternateIcon" 
-        [icon]="alternateIcon" 
-        [size]="size"
+        *ngIf="alternateIcon()" 
+        [icon]="alternateIcon()" 
+        [size]="size()"
         (mousemove)="onMouseMove($event)"
     ></fa-icon>
     <div class="BrandIconHoverCatcher" (mousemove)="onMouseMove($event)"></div>

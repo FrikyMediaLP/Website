@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, input, output } from '@angular/core';
 import { LangService } from 'src/app/services/lang.service';
 
 interface LANGUAGE {
@@ -16,14 +16,14 @@ interface LANGUAGES {
     standalone: false
 })
 export class ProjectSummaryComponent {
-  @Input() name: string = '';
-  @Input() headersize: number = 1;
-  @Input() title: LANGUAGE = {};
-  @Input() description: LANGUAGES = {};
-  @Input() img: string = '';
-  @Output('onImageClick') onImageClick = new EventEmitter<MouseEvent>();
-  @Input() color: string = '';
-  @Input() link: string = '';
+  readonly name = input<string>('');
+  readonly headersize = input<number>(1);
+  readonly title = input<LANGUAGE>({});
+  readonly description = input<LANGUAGES>({});
+  readonly img = input<string>('');
+  readonly onImageClick = output<MouseEvent>({ alias: 'onImageClick' });
+  readonly color = input<string>('');
+  readonly link = input<string>('');
 
   constructor(private langService: LangService) {}
 

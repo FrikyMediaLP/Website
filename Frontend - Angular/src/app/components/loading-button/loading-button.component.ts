@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
     selector: 'app-loading-button',
@@ -7,13 +7,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     standalone: false
 })
 export class LoadingButtonComponent {
-  @Input() type: string = null;
-  @Input() disabled: boolean = false;
-  @Output('onClick') onClickEvent = new EventEmitter();
+  readonly type = input<string>(null);
+  readonly disabled = input<boolean>(false);
+  readonly onClickEvent = output<MouseEvent>({ alias: 'onClick' });
   loading: boolean = false;
 
   onClick(e: MouseEvent){
-    if(this.disabled) return;
+    if(this.disabled()) return;
     if(this.loading) return;
 
     //click animation

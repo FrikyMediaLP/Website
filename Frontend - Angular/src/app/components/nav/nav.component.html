@@ -1,4 +1,4 @@
-<nav [ngClass]="{ 'inline': inline, 'scrolled': scrolled }">
+<nav [ngClass]="{ 'inline': inline(), 'scrolled': scrolled }">
     <ul>
         <li><a routerLink="/">home</a></li>
         <li><a routerLink="/about">{{ lang === 'de' ? 'über mich' : 'about' }}</a></li>

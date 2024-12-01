@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
     selector: 'app-loading-ring',
@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
     standalone: false
 })
 export class LoadingRingComponent {
-  @Input() size: number = 1;
+  readonly size = input<number>(1);
 }

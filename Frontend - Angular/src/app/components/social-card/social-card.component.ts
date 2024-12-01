@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, input, viewChild } from '@angular/core';
 import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
 export interface Color {
   image?: string;
@@ -14,24 +14,24 @@ const ALTERNATE_DELAY = 10000;
     standalone: false
 })
 export class SocialCardComponent {
-  @Input() name: string;
-  @Input() info: string;
-  @Input() color: any;
-  @Input() video: string;
-  @Input() format: 'vertical' | 'horizontal' = "horizontal";
-  @Input() playbackRate: number = 1;
-  @Input() link: string;
-  @Input() icon: IconDefinition;
-  @Input() alternateIcon: IconDefinition;
-  @Input() icon_URL: string;
+  readonly name = input<string>();
+  readonly info = input<string>();
+  readonly color = input<any>();
+  readonly video = input<string>();
+  readonly format = input<'vertical' | 'horizontal'>("horizontal");
+  readonly playbackRate = input<number>(1);
+  readonly link = input<string>();
+  readonly icon = input<IconDefinition>();
+  readonly alternateIcon = input<IconDefinition>();
+  readonly icon_URL = input<string>();
 
-  @ViewChild('videoRef') videoRef: ElementRef;
+  readonly videoRef = viewChild<ElementRef>('videoRef');
 
   firstItteration: boolean = true;
   useAlternateIcon: boolean = false;
 
   ngAfterViewInit() {
-    if(!this.alternateIcon) return;
+    if(!this.alternateIcon()) return;
 
     setInterval(() => {
       this.firstItteration = false;
@@ -40,11 +40,12 @@ export class SocialCardComponent {
   }
 
   replayVideo() {
-    if(!this.videoRef) return;
-    this.videoRef.nativeElement.muted = true;
-    this.videoRef.nativeElement.play();
-    this.videoRef.nativeElement.currentTime = 0;
-    this.videoRef.nativeElement.playbackRate = this.playbackRate;
+    const videoRef = this.videoRef();
+    if(!videoRef) return;
+    videoRef.nativeElement.muted = true;
+    videoRef.nativeElement.play();
+    videoRef.nativeElement.currentTime = 0;
+    videoRef.nativeElement.playbackRate = this.playbackRate();
   }
   videoError(e: ErrorEvent){
     console.log(e)

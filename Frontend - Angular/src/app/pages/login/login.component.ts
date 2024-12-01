@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, viewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { faTwitch } from '@fortawesome/free-brands-svg-icons';
@@ -17,8 +17,8 @@ interface obj {
     standalone: false
 })
 export class LoginComponent {
-  @ViewChild('output') outputRef: OutputComponent;
-  @ViewChild('link') linkRef: ElementRef;
+  readonly outputRef = viewChild<OutputComponent>('output');
+  readonly linkRef = viewChild<ElementRef>('link');
   user: USER = null;
   loading: boolean = false;
   just_logged_in: boolean = false;
@@ -41,8 +41,8 @@ export class LoginComponent {
         this.user = user;
         if(this.just_logged_in) this.router.navigateByUrl(this.twitch.GetOrigin());
       } else {
-        this.linkRef.nativeElement.href = this.twitch.GenerateLoginLink();
-        this.outputRef.trigger("WARNING", {
+        this.linkRef().nativeElement.href = this.twitch.GenerateLoginLink();
+        this.outputRef().trigger("WARNING", {
           'de': 'Twitch Login Token Abgelaufen! Bitte neuanmelden!',
           'en': 'Twitch Login Token Expired! Please Relogin!'
         }[this.lang]);
@@ -65,7 +65,7 @@ export class LoginComponent {
   }
   ngAfterViewInit() {
     //Login Logic
-    this.outputRef.clear();
+    this.outputRef().clear();
     let list : Array<string> = [];
 
     //extract query / hash
@@ -101,38 +101,38 @@ export class LoginComponent {
             //login error
             if(response.err)  {
               if(response.err.name === 'HttpErrorResponse') {
-                this.outputRef.trigger("ERROR", {
+                this.outputRef().trigger("ERROR", {
                   'de': 'Login fehlgeschlagen! Grund: Verifikations Service offline oder unerreichbar. Versuchen sie es nochmal später nochmal ... oder schreiben sie mir :)',
                   'en': 'Login failed! Reason: Verfication Service down or unreachable. Please try again later ... or contact me :)'
                 }[this.lang]);
-              } else this.outputRef.trigger("ERROR", response.err.message);
-              this.linkRef.nativeElement.href = this.twitch.GenerateLoginLink();
+              } else this.outputRef().trigger("ERROR", response.err.message);
+              this.linkRef().nativeElement.href = this.twitch.GenerateLoginLink();
             }
             
             this.loading = false;
           });
       } else {
         //state missmatch
-        this.outputRef.trigger("ERROR", {
+        this.outputRef().trigger("ERROR", {
           'de': 'Login fehlgeschlagen! Grund: State-Abgleich fehlgeschlagen. Versuchen sie es nochmal ohne den Tab zu wechseln ... oder schreiben sie mir :)',
           'en': 'Login failed! Reason: State missmatch. Please try again without switching tabs or contact me :)'
         }[this.lang]);
         
         //reset for relogin
         this.twitch.Reset();
-        this.linkRef.nativeElement.href = this.twitch.GenerateLoginLink();
+        this.linkRef().nativeElement.href = this.twitch.GenerateLoginLink();
         this.loading = false;
       }
     } else if(this.twitch.userToken === null) {
       //detect error
       if(response['error']){
         let token = response['error_description'].pop();
-        this.outputRef.trigger("ERROR", token);
+        this.outputRef().trigger("ERROR", token);
       } 
 
       //reset for relogin
       this.twitch.Reset();
-      this.linkRef.nativeElement.href = this.twitch.GenerateLoginLink();
+      this.linkRef().nativeElement.href = this.twitch.GenerateLoginLink();
     }
 
     
@@ -155,8 +155,8 @@ export class LoginComponent {
     this.twitch.clearUser();
     this.twitch.Reset();
     this.user = null;
-    this.linkRef.nativeElement.href = this.twitch.GenerateLoginLink();
-    this.outputRef.trigger("INFO", {
+    this.linkRef().nativeElement.href = this.twitch.GenerateLoginLink();
+    this.outputRef().trigger("INFO", {
       'de': 'Abgemeldet!',
       'en': 'Logged out!'
     }[this.lang]);

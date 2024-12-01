@@ -1,19 +1,19 @@
 <div class="wrapper" #wrapper (mouseenter)="slow = true;" (mouseleave)="slow = false;" [ngClass]="{ alternate: useAlternateIcon, firstItteration }">
     <div 
-        *ngIf="center"
-        class="icon center" [ngStyle]="{ '--color': center.color }">
-        <img *ngIf="center.icon_url" [src]="center.icon_url" [alt]="center.title"/>
-        <fa-icon *ngIf="center.icon_fa" [icon]="center.icon_fa"></fa-icon>
+        *ngIf="center()"
+        class="icon center" [ngStyle]="{ '--color': center().color }">
+        <img *ngIf="center().icon_url" [src]="center().icon_url" [alt]="center().title"/>
+        <fa-icon *ngIf="center().icon_fa" [icon]="center().icon_fa"></fa-icon>
     </div>
 
-    <ng-container *ngFor="let icon of icons; let i = index">
+    @for (icon of icons(); track $index) {
         <a
             *ngIf="icon.link"
             class="icon" 
             [attr.href]="icon.link"
             target="_blank"
             [title]="icon.title"
-            [ngStyle]="{ '--color': icon.color, '--phi': (i / icons.length) * 360 }"
+            [ngStyle]="{ '--color': icon.color, '--phi': ($index / icons().length) * 360 }"
             [ngClass]="{ alternateIcons: icon.icon_fa && icon.icon_alternative, alternate: useAlternateIcon, firstItteration }"
         >
             <img *ngIf="icon.icon_url" [src]="icon.icon_url" [alt]="icon.title" />
@@ -26,11 +26,11 @@
             [routerLink]="icon.router_link"
             target="_blank"
             [title]="icon.title"
-            [ngStyle]="{ '--color': icon.color, '--phi': (i / icons.length) * 360 }"
+            [ngStyle]="{ '--color': icon.color, '--phi': ($index / icons().length) * 360 }"
         >
             <img *ngIf="icon.icon_url" [src]="icon.icon_url" [alt]="icon.title" />
             <fa-icon *ngIf="icon.icon_fa" [icon]="icon.icon_fa"></fa-icon>
             <fa-icon *ngIf="icon.icon_alternative" [icon]="icon.icon_alternative"></fa-icon>
         </a>
-    </ng-container>
+    }
 </div>

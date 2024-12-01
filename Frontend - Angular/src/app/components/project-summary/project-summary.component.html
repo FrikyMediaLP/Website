@@ -1,14 +1,14 @@
-<div class="Project" [ngStyle]="{ 'background-color': color, '--headersize': headersize }">
-    <p class="ProjectTitle">{{(title[lang] || title['*'])}}</p>
-    <img class="ProjectImage" [src]="img" (click)="imageClick($event)" alt="Project Image"/>
+<div class="Project" [ngStyle]="{ 'background-color': color(), '--headersize': headersize() }">
+    <p class="ProjectTitle">{{(title()[lang] || title()['*'])}}</p>
+    <img class="ProjectImage" [src]="img()" (click)="imageClick($event)" alt="Project Image"/>
 
     <div class="ProjectDescription">
-        <p *ngFor="let p of description[lang]">
+        <p *ngFor="let p of description()[lang]">
             {{p}}
         </p>
-        <a *ngIf="name"
-            [routerLink]="'/projects'" [fragment]="name" class="ProjectLink">{{lang === 'de' ? 'mehr' : 'more' }} details</a>
-        <a *ngIf="link"
-            [href]="link" class="ProjectLink" target="_blank">{{lang === 'de' ? 'besuchen' : 'visit' }}</a>
+        <a *ngIf="name()"
+            [routerLink]="'/projects'" [fragment]="name()" class="ProjectLink">{{lang === 'de' ? 'mehr' : 'more' }} details</a>
+        <a *ngIf="link()"
+            [href]="link()" class="ProjectLink" target="_blank">{{lang === 'de' ? 'besuchen' : 'visit' }}</a>
     </div>
 </div>

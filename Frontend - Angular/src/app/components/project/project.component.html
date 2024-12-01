@@ -1,8 +1,8 @@
-<div #wrapper [id]="hash" class="Project" [ngClass]="{ show: show, 'has-details': project.details }" >
+<div #wrapper [id]="hash" class="Project" [ngClass]="{ show: show, 'has-details': project().details }" >
     <div class="ProjectInfo" 
         (click)="details && toggleProject($event)" 
         (keypress)="details && toggleProject($event)"
-        [tabindex]="project.details ? '1' : '-1'"
+        [tabindex]="project().details ? '1' : '-1'"
         role="button"
         aria-expanded="false"
     >

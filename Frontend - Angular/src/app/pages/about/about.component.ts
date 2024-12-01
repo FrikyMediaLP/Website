@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, viewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { faCss3Alt, faHtml5, faJs, faNode } from '@fortawesome/free-brands-svg-icons';
 import { Subscription } from 'rxjs';
@@ -22,7 +22,7 @@ export class AboutComponent {
   faHtml5 = faHtml5;
   faNode = faNode;
   
-  @ViewChild('imageEnlargeWrapper') imageEnlargerWrapper: ElementRef;
+  readonly imageEnlargerWrapper = viewChild<ElementRef>('imageEnlargeWrapper');
   intersectionSubscription: Subscription;
 
   constructor(
@@ -45,11 +45,12 @@ export class AboutComponent {
   }
 
   showEnlargeImage(src: string){
-    this.imageEnlargerWrapper.nativeElement.querySelector('img').src = src;
-    this.imageEnlargerWrapper.nativeElement.querySelector('img').style.backgroundColor = 'var(--color-dark)';
-    this.imageEnlargerWrapper.nativeElement.style.display = 'block';
+    this.imageEnlargerWrapper().nativeElement.querySelector('img').src = src;
+    this.imageEnlargerWrapper().nativeElement.querySelector('img').style.backgroundColor = 'var(--color-dark)';
+    const imageEnlargerWrapper = this.imageEnlargerWrapper();
+    imageEnlargerWrapper.nativeElement.style.display = 'block';
 
-    let elt = this.imageEnlargerWrapper.nativeElement;
+    let elt = imageEnlargerWrapper.nativeElement;
     while(elt.tagName !== "BODY") elt = elt.parentElement;
     elt.style.overflow = 'hidden';
     elt.style.paddingRight = (window.innerWidth - document.documentElement.clientWidth) + 'px';
@@ -62,9 +63,10 @@ export class AboutComponent {
       return;
     }
 
-    this.imageEnlargerWrapper.nativeElement.style.display = 'none';
+    const imageEnlargerWrapper = this.imageEnlargerWrapper();
+    imageEnlargerWrapper.nativeElement.style.display = 'none';
 
-    let elt = this.imageEnlargerWrapper.nativeElement;
+    let elt = imageEnlargerWrapper.nativeElement;
     while(elt.tagName !== "BODY") elt = elt.parentElement;
     elt.style.overflow = 'unset';
     elt.style.paddingRight = 'unset';

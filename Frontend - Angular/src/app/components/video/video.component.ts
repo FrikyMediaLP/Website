@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, input, viewChild } from '@angular/core';
 
 @Component({
     selector: 'app-video',
@@ -8,13 +8,16 @@ import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 })
 export class VideoComponent {
   playing: boolean = true;
-  @Input() lazy: boolean = false;
-  @Input() source: string;
-  @Input() options: Array<string> = [];
-  @Input() fullscreen: boolean = false;
+  readonly lazy = input<boolean>(false);
+  readonly source = input<string>();
+  readonly options = input<Array<string>>([]);
+  readonly fullscreen = input<boolean>(false);
+  // TODO: Skipped for migration because:
+  //  Your application code writes to the input. This prevents migration.
   @Input() static: boolean = false;
-  @ViewChild('video') video: ElementRef;
-  @ViewChild('img') img: ElementRef;
+  readonly is_static = input<boolean>(false);
+  readonly video = viewChild<ElementRef>('video');
+  readonly img = viewChild<ElementRef>('img');
 
   poster: string = null;
 
@@ -26,12 +29,13 @@ export class VideoComponent {
     const DURATION = 500;
 
     let last = this.poster;
-    if(!this.img) {
-      while(last === this.poster) this.poster = this.options[Math.floor((this.options.length * Math.random()) + 1) - 1];
+    const img = this.img();
+    if(!img) {
+      while(last === this.poster) this.poster = this.options()[Math.floor((this.options().length * Math.random()) + 1) - 1];
       return;
     };
 
-    this.img.nativeElement.animate([
+    img.nativeElement.animate([
       { 'opacity': 1 },
       { 'opacity': 0 }
      ], {
@@ -40,9 +44,9 @@ export class VideoComponent {
     });
 
     setTimeout(() => {
-      while(last === this.poster) this.poster = this.options[Math.floor((this.options.length * Math.random()) + 1) - 1];
+      while(last === this.poster) this.poster = this.options()[Math.floor((this.options().length * Math.random()) + 1) - 1];
     
-      this.img.nativeElement.animate([
+      this.img().nativeElement.animate([
         { 'opacity': 0 },
         { 'opacity': 1 }
        ], {
@@ -53,13 +57,13 @@ export class VideoComponent {
   }
 
   play(){
-    if(!this.source) return;
-    if(!this.playing) this.video.nativeElement.play();
+    if(!this.source()) return;
+    if(!this.playing) this.video().nativeElement.play();
     this.playing = true;
   }
   pause(){
-    if(!this.source) return;
-    if(this.playing) this.video.nativeElement.pause();
+    if(!this.source()) return;
+    if(this.playing) this.video().nativeElement.pause();
     this.playing = false;
   }
   toggle(){

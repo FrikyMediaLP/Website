@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, viewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { faTrashCan, faBoxArchive } from '@fortawesome/free-solid-svg-icons';
 import { LoadingButtonComponent } from 'src/app/components/loading-button/loading-button.component';
@@ -25,8 +25,8 @@ export class ContactComponent {
   faTrash = faTrashCan;
   faBoxArchive = faBoxArchive;
 
-  @ViewChild('output') outputRef: OutputComponent;
-  @ViewChild('button') buttonRef: LoadingButtonComponent;
+  readonly outputRef = viewChild<OutputComponent>('output');
+  readonly buttonRef = viewChild<LoadingButtonComponent>('button');
 
   pending_loading: boolean = false;
   pending_contacts: Array<CONTACT> = [];
@@ -103,7 +103,7 @@ export class ContactComponent {
   submit() {
     if(this.formSubmitted) return;
     this.formSubmitted = true;
-    this.buttonRef.loading = true;
+    this.buttonRef().loading = true;
     this.pending_loading = true;
     this.changeDetectorRef.detectChanges();
     
@@ -113,7 +113,7 @@ export class ContactComponent {
         if(x === true){
           this.refetchPending();
           this.form.reset();
-          this.outputRef.trigger("INFO", { 
+          this.outputRef().trigger("INFO", { 
             'de': 'Anfrage übermittelt!',
             'en': 'Contact Request delivered!'
           }[this.lang]);
@@ -121,7 +121,7 @@ export class ContactComponent {
           this.pending_loading = false;
         }
 
-        this.buttonRef.loading = false;
+        this.buttonRef().loading = false;
         this.formSubmitted = false;
         this.changeDetectorRef.detectChanges();
       });
@@ -137,7 +137,7 @@ export class ContactComponent {
         if(x === true){
           this.refetchPending();
           this.refetchArchieved();
-          this.outputRef.trigger("INFO", { 
+          this.outputRef().trigger("INFO", { 
             'de': 'Anfrage archieviert!',
             'en': 'Contact Request archieved!'
           }[this.lang]);
@@ -157,7 +157,7 @@ export class ContactComponent {
       .subscribe(x => {
         if(x === true){
           this.refetchPending();
-          this.outputRef.trigger("INFO", { 
+          this.outputRef().trigger("INFO", { 
             'de': 'Anfrage gelöscht!',
             'en': 'Contact Request deleted!'
           }[this.lang]);

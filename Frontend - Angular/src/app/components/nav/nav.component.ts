@@ -1,4 +1,4 @@
-import { Component, HostListener, Input } from '@angular/core';
+import { Component, HostListener, input } from '@angular/core';
 import { ResolveEnd, Router } from '@angular/router';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { LangService } from 'src/app/services/lang.service';
@@ -11,7 +11,7 @@ import { TwitchService, USER } from 'src/app/services/twitch.service';
     standalone: false
 })
 export class NavComponent {
-  @Input() inline: boolean = false;
+  readonly inline = input<boolean>(false);
   scrolled: boolean = false;
   user: USER = null;
   faUser = faUser;

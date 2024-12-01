@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
 
@@ -11,18 +11,18 @@ const ALTERNATE_DELAY = 10000;
     standalone: false
 })
 export class BrandIconComponent {
-  @Input() icon: IconDefinition;
-  @Input() alternateIcon: IconDefinition;
-  @Input() size: SizeProp;
-  @Input() color: string = 'white';
-  @Input() title: string;
-  @Input() link: string;
+  readonly icon = input<IconDefinition>();
+  readonly alternateIcon = input<IconDefinition>();
+  readonly size = input<SizeProp>();
+  readonly color = input<string>('white');
+  readonly title = input<string>();
+  readonly link = input<string>();
 
   firstItteration: boolean = true;
   useAlternateIcon: boolean = false;
 
   ngAfterViewInit() {
-    if(!this.alternateIcon) return;
+    if(!this.alternateIcon()) return;
 
     setInterval(() => {
       this.firstItteration = false;

@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, input, Input, viewChild } from '@angular/core';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 export interface ICON {
@@ -21,9 +21,9 @@ const ALTERNATE_DELAY = 10000;
     standalone: false
 })
 export class IconWheelComponent {
-  @ViewChild('wrapper') wrapperRef: ElementRef;
-  @Input() center: ICON = null;
-  @Input() icons: Array<ICON> = [];
+  readonly wrapperRef = viewChild<ElementRef>('wrapper');
+  readonly center = input<ICON>(null);
+  readonly icons = input<Array<ICON>>([]);
 
   slow: boolean = false;
   duration: number = DURATION;
@@ -66,7 +66,7 @@ export class IconWheelComponent {
     //clamp to 0-360
     if(this.pos > 360) this.pos = 0;
 
-    this.wrapperRef.nativeElement.style.setProperty('--phi_offset', this.pos.toFixed(2));
+    this.wrapperRef().nativeElement.style.setProperty('--phi_offset', this.pos.toFixed(2));
     
     //retrigger callback
     window.requestAnimationFrame((timestamp) => this.animate(timestamp));

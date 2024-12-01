@@ -1,16 +1,16 @@
-<a [attr.href]="link" class="card" [ngStyle]="color" (mouseenter)="replayVideo()" [ngClass]="{ alternateIcons: icon && alternateIcon, alternate: useAlternateIcon, firstItteration }">
-    <fa-icon *ngIf="icon" [icon]="icon"></fa-icon>
-    <fa-icon *ngIf="alternateIcon" [icon]="alternateIcon"></fa-icon>
-    <img *ngIf="icon_URL" [src]="icon_URL" [alt]="name" />
+<a [attr.href]="link()" class="card" [ngStyle]="color()" (mouseenter)="replayVideo()" [ngClass]="{ alternateIcons: icon && alternateIcon, alternate: useAlternateIcon, firstItteration }">
+    <fa-icon *ngIf="icon()" [icon]="icon()"></fa-icon>
+    <fa-icon *ngIf="alternateIcon()" [icon]="alternateIcon()"></fa-icon>
+    <img *ngIf="icon_URL()" [src]="icon_URL()" [alt]="name()" />
     <div class="info">
-        <p>{{name}}</p>
-        <p>{{info}}</p>
+        <p>{{name()}}</p>
+        <p>{{info()}}</p>
     </div>
     <video 
-        *ngIf="video"
+        *ngIf="video()"
         #videoRef
-        [ngClass]="{ 'vertical': format === 'vertical', 'horizontal': format === 'horizontal' }"
+        [ngClass]="{ 'vertical': format() === 'vertical', 'horizontal': format() === 'horizontal' }"
         muted loop (error)="videoError($event)">
-        <source [src]="video" (error)="videoError($event)" />
+        <source [src]="video()" (error)="videoError($event)" />
     </video>
 </a>

@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, viewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { faJs, faCss3Alt, faHtml5, faNode, faJava, faGitAlt, faPython, faAngular, faVuejs, faReact, faLinux, faPhp, faTypo3 } from '@fortawesome/free-brands-svg-icons';
 import { LangService } from 'src/app/services/lang.service';
@@ -24,10 +24,10 @@ export class SkillsComponent {
   faPhp = faPhp;
   faTypo3 = faTypo3;
   
-  @ViewChild('skillelevelhint') hint: ElementRef;
+  readonly hint = viewChild<ElementRef>('skillelevelhint');
   
   scroll2Hint(){
-    this.hint.nativeElement.scrollIntoView({ behavior: "smooth" });
+    this.hint().nativeElement.scrollIntoView({ behavior: "smooth" });
   }
 
   constructor(

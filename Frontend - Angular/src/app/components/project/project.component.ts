@@ -1,4 +1,4 @@
-import { Component, Input, Output, ViewChild, ElementRef, ViewEncapsulation, OnInit, AfterViewInit, EventEmitter } from '@angular/core';
+import { Component, ElementRef, ViewEncapsulation, OnInit, AfterViewInit, input, output, viewChild } from '@angular/core';
 import { LangService } from 'src/app/services/lang.service';
 
 export interface PROJECT {
@@ -52,10 +52,10 @@ export interface PROJECT_SECTION_IMAGE {
     standalone: false
 })
 export class ProjectComponent implements OnInit, AfterViewInit {
-  @Input() project: PROJECT;
-  @Output() onImageEnlarge = new EventEmitter();
-  @Output() onShowToggle = new EventEmitter();
-  @ViewChild('wrapper') wrapper: ElementRef<HTMLDivElement>;
+  readonly project = input<PROJECT>();
+  readonly onImageEnlarge = output<string>();
+  readonly onShowToggle = output<ProjectComponent>();
+  readonly wrapper = viewChild<ElementRef<HTMLDivElement>>('wrapper');
 
   name: LANGOPTIONS;
   hash: string;
@@ -71,15 +71,15 @@ export class ProjectComponent implements OnInit, AfterViewInit {
 
   constructor(private langService: LangService) {}
   ngOnInit() {
-    this.name = this.project.name;
-    this.hash = this.project.hash;
-    this.status = this.project.status;
-    this.start = this.project.start;
-    this.end = this.project.end;
-    this.details = this.project.details;
-    this.custom_html = this.project.custom_html;
-    this.active = this.project.active;
-    this.show = this.project.show;
+    this.name = this.project().name;
+    this.hash = this.project().hash;
+    this.status = this.project().status;
+    this.start = this.project().start;
+    this.end = this.project().end;
+    this.details = this.project().details;
+    this.custom_html = this.project().custom_html;
+    this.active = this.project().active;
+    this.show = this.project().show;
   }
   ngAfterViewInit() {
     if(this.show) this.showProject();
@@ -154,16 +154,16 @@ export class ProjectComponent implements OnInit, AfterViewInit {
         fill: 'forwards'
       });
 
-      this.wrapper.nativeElement.querySelector('.ProjectInfo').setAttribute('aria-expanded', 'true');
+      this.wrapper().nativeElement.querySelector('.ProjectInfo').setAttribute('aria-expanded', 'true');
     } else {
-      this.wrapper.nativeElement.querySelector('.ProjectInfo').setAttribute('aria-expanded', 'false');
+      this.wrapper().nativeElement.querySelector('.ProjectInfo').setAttribute('aria-expanded', 'false');
     }
 
     if(parent.classList.contains('show')) this.onShowToggle.emit(this);
   }
   showProject(){
     const DURATION = 500;
-    let detailsElt = this.wrapper.nativeElement.querySelector('.ProjectDetails');
+    let detailsElt = this.wrapper().nativeElement.querySelector('.ProjectDetails');
 
     detailsElt.animate([
       { 'maxHeight': "0" },
@@ -183,22 +183,22 @@ export class ProjectComponent implements OnInit, AfterViewInit {
       fill: 'forwards'
     });
     
-    this.wrapper.nativeElement.querySelector('.ProjectInfo').setAttribute('aria-expanded', 'true');
+    this.wrapper().nativeElement.querySelector('.ProjectInfo').setAttribute('aria-expanded', 'true');
 
-    let rect = this.wrapper.nativeElement.getBoundingClientRect();
-    let html = (this.wrapper.nativeElement as HTMLElement);
+    let rect = this.wrapper().nativeElement.getBoundingClientRect();
+    let html = (this.wrapper().nativeElement as HTMLElement);
     while(html.tagName !== "HTML") html = html.parentElement;
     html.scrollTo(0, rect.top);
 
     setTimeout(() => {
-      let rect = this.wrapper.nativeElement.getBoundingClientRect();
-      let html = (this.wrapper.nativeElement as HTMLElement);
+      let rect = this.wrapper().nativeElement.getBoundingClientRect();
+      let html = (this.wrapper().nativeElement as HTMLElement);
       while(html.tagName !== "HTML") html = html.parentElement;
       html.scrollTo(0, rect.top - 100); //-100 due to navigation overlay (hides some part of the html)
     }, DURATION);
   }
   hideProject(){
-    let detailsElt = this.wrapper.nativeElement.querySelector('.ProjectDetails');
+    let detailsElt = this.wrapper().nativeElement.querySelector('.ProjectDetails');
 
     detailsElt.animate([
       { 'maxHeight': detailsElt.scrollHeight + "px" },
@@ -209,8 +209,8 @@ export class ProjectComponent implements OnInit, AfterViewInit {
       fill: 'forwards'
     });
 
-    this.wrapper.nativeElement.classList.remove('show');
-    this.wrapper.nativeElement.querySelector('.ProjectInfo').setAttribute('aria-expanded', 'false');
+    this.wrapper().nativeElement.classList.remove('show');
+    this.wrapper().nativeElement.querySelector('.ProjectInfo').setAttribute('aria-expanded', 'false');
 
   }
   
