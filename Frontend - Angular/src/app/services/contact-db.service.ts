@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, of, switchMap, take } from 'rxjs';
-// @ts-ignore
-import { randomBytes } from 'crypto';
+import { nanoid } from 'nanoid';
 import { environment } from 'src/environments/environment';
 
 interface REQUEST {
@@ -68,7 +67,7 @@ export function GetPaginationString(first = 10, cursor = 0, options: PAGINATION_
   providedIn: 'root'
 })
 export class ContactDBService {
-  session: string = randomBytes(20).toString('hex');
+  session: string = nanoid(20);
 
   constructor(private client: HttpClient) {
     let storage = window.localStorage.getItem('dbsession');

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
@@ -55,10 +55,9 @@ import { WINDOW_PROVIDERS } from './window.providers';
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [WINDOW_PROVIDERS ],
+  providers: [WINDOW_PROVIDERS, provideHttpClient(withInterceptorsFromDi())],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

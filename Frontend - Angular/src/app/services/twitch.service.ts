@@ -1,7 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-// @ts-ignore
-import { randomBytes } from 'crypto';
+import { nanoid } from 'nanoid';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, catchError, of, switchMap, take } from 'rxjs';
 import { WINDOW } from '../window.providers';
@@ -34,8 +33,8 @@ const LOGIN_SERVER = environment.LOGIN_SERVER || '';
   providedIn: 'root'
 })
 export class TwitchService {
-  nonce: string = randomBytes(20).toString('hex');
-  state: string = randomBytes(20).toString('hex');
+  nonce: string = nanoid(20);
+  state: string = nanoid(20);
   
   userToken: string = null;
   userData: USER | null = null;
@@ -59,11 +58,11 @@ export class TwitchService {
     this.SetState();
   }
   SetNonce() {
-    this.nonce = randomBytes(20).toString('hex');
+    this.nonce = nanoid(20);
     window.localStorage.setItem(STORAGE_KEY_NONCE, this.nonce);
   }
   SetState(){
-    this.state = randomBytes(20).toString('hex');
+    this.state = nanoid(20);
     window.localStorage.setItem(STORAGE_KEY_STATE, this.state);
   }
   
