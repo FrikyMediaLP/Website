@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
+// @ts-ignore
 import { randomBytes } from 'crypto';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, catchError, of, switchMap, take } from 'rxjs';

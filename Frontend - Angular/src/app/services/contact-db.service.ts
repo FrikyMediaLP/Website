@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, of, switchMap, take } from 'rxjs';
+// @ts-ignore
 import { randomBytes } from 'crypto';
 import { environment } from 'src/environments/environment';
 
