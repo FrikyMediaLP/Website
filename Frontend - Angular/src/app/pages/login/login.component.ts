@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { faTwitch } from '@fortawesome/free-brands-svg-icons';
 import { OutputComponent } from 'src/app/components/output/output.component';
@@ -28,7 +29,8 @@ export class LoginComponent {
     private langService: LangService, 
     private twitch: TwitchService, 
     private router: Router, 
-    private changedetector: ChangeDetectorRef
+    private changedetector: ChangeDetectorRef,
+    private titleService: Title
   ) {
     this.loading = true;
 
@@ -58,6 +60,8 @@ export class LoginComponent {
     } else {
       this.loading = false;
     }
+    
+    this.setTitle();
   }
   ngAfterViewInit() {
     //Login Logic
@@ -156,6 +160,10 @@ export class LoginComponent {
       'de': 'Abgemeldet!',
       'en': 'Logged out!'
     }[this.lang]);
+  }
+
+  setTitle() {
+    this.titleService.setTitle("Login - Tim Klenk.de");
   }
   
   get lang(){

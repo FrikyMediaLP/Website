@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { faTwitch, faYoutube, faTwitter, faDiscord, faInstagram, faGithub, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,6 +19,12 @@ export class SocialsComponent {
   faGithub = faGithub;
   faEnvelope = faEnvelope;
 
+  constructor(
+    private titleService: Title
+  ) {
+    this.setTitle();
+  }
+
   replayVideo(e: MouseEvent) {
     (e.target as any).play();
     (e.target as any).currentTime = 0;
@@ -28,5 +35,9 @@ export class SocialsComponent {
     (e.target as Element).innerHTML = s;
 
     (e.target as any).play();
+  }
+
+  setTitle() {
+    this.titleService.setTitle("Socials - Tim Klenk.de");
   }
 }

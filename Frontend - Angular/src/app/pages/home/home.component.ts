@@ -1,10 +1,15 @@
-import { ChangeDetectorRef, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { faTwitter, faTwitch, faGithub, faYoutube, faInstagram, faDiscord, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faChevronLeft, faChevronRight, faImages, faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { Subject, takeUntil } from 'rxjs';
 import { VideoComponent } from 'src/app/components/video/video.component';
 import { CALLBACK_RESPONSE, CustomIntersectionObserverService } from 'src/app/services/custom-intersection-observer.service';
 import { LangService } from 'src/app/services/lang.service';
+
+interface LANGOPTIONS {
+  [key: string]: string
+}
 
 @Component({
     selector: 'app-home',
@@ -47,7 +52,14 @@ export class HomeComponent {
   @ViewChild('headerBackground') headerBackground: VideoComponent;
   @ViewChild('imageEnlargeWrapper') imageEnlargerWrapper: ElementRef;
 
-  constructor(private langService: LangService, private intersectionObserver: CustomIntersectionObserverService, private changeDetectorRef: ChangeDetectorRef){}
+  constructor(
+    private langService: LangService,
+    private intersectionObserver: CustomIntersectionObserverService,
+    private titleService: Title
+  ){
+    this.langService.langEvents.subscribe(() => this.setTitle());
+    this.setTitle();
+  }
 
   ngAfterViewInit(){
     //Randomly change Header Text
@@ -219,6 +231,10 @@ export class HomeComponent {
       if(entry.intersect) entry.elt.classList.add('visible');
       else entry.elt.classList.remove('visible');
     });
+  }
+
+  setTitle() {
+    this.titleService.setTitle("Tim Klenk.de");
   }
 
   get lang() {

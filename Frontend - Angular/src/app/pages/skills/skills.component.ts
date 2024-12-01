@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { faJs, faCss3Alt, faHtml5, faNode, faJava, faGitAlt, faPython, faAngular, faVuejs, faReact, faLinux, faPhp, faTypo3 } from '@fortawesome/free-brands-svg-icons';
 import { LangService } from 'src/app/services/lang.service';
 
@@ -29,7 +30,17 @@ export class SkillsComponent {
     this.hint.nativeElement.scrollIntoView({ behavior: "smooth" });
   }
 
-  constructor(private langService: LangService) {}
+  constructor(
+    private langService: LangService,
+    private titleService: Title
+  ) {
+    this.langService.langEvents.subscribe(() => this.setTitle());
+    this.setTitle();
+  }
+
+  setTitle() {
+    this.titleService.setTitle("Skills - Tim Klenk.de");
+  }
 
   get lang() {
     return this.langService.lang;

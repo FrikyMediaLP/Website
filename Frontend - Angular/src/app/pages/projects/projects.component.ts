@@ -1,7 +1,12 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { PROJECT, ProjectComponent } from 'src/app/components/project/project.component';
 import { LangService } from 'src/app/services/lang.service';
+
+interface LANGOPTIONS {
+  [key: string]: string
+}
 
 @Component({
     selector: 'app-projects',
@@ -595,7 +600,15 @@ export class ProjectsComponent {
 
   visible_project: ProjectComponent;
 
-  constructor(private langService: LangService, private route: ActivatedRoute) { }
+  constructor(
+    private langService: LangService,
+    private route: ActivatedRoute,
+    private titleService: Title
+  ) { 
+    this.langService.langEvents.subscribe(() => this.setTitle());
+    this.setTitle();
+  }
+
   ngOnInit() {
     this.route.fragment.subscribe((fragment: string) => {
       let project = this.projects.find(elt => elt.hash === fragment);
@@ -642,6 +655,14 @@ export class ProjectsComponent {
     while(elt.tagName !== "BODY") elt = elt.parentElement;
     elt.style.overflow = 'unset';
     elt.style.paddingRight = 'unset';
+  }
+
+  setTitle() {
+    const translations: LANGOPTIONS = {
+      'de': 'Projekte',
+      'en': 'Projects'
+    };
+    this.titleService.setTitle(translations[this.lang] + " - Tim Klenk.de");
   }
 
   get lang() {

@@ -1,8 +1,13 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { faCss3Alt, faHtml5, faJs, faNode } from '@fortawesome/free-brands-svg-icons';
 import { Subscription } from 'rxjs';
 import { CALLBACK_RESPONSE, CustomIntersectionObserverService } from 'src/app/services/custom-intersection-observer.service';
 import { LangService } from 'src/app/services/lang.service';
+
+interface LANGOPTIONS {
+  [key: string]: string
+}
 
 @Component({
     selector: 'app-about',
@@ -20,7 +25,15 @@ export class AboutComponent {
   @ViewChild('imageEnlargeWrapper') imageEnlargerWrapper: ElementRef;
   intersectionSubscription: Subscription;
 
-  constructor(private langService: LangService, private intersectionObserver: CustomIntersectionObserverService ){}
+  constructor(
+    private langService: LangService,
+    private intersectionObserver: CustomIntersectionObserverService,
+    private titleService: Title
+  ){
+    this.langService.langEvents.subscribe(() => this.setTitle());
+    this.setTitle();
+  }
+
   ngAfterViewInit(){
     //underline trigger
     this.intersectionSubscription =  this.intersectionObserver
@@ -62,6 +75,14 @@ export class AboutComponent {
       if(entry.intersect) entry.elt.classList.add('visible');
       else entry.elt.classList.remove('visible');
     });
+  }
+
+  setTitle() {
+    const translations: LANGOPTIONS = {
+      'de': 'Über mich',
+      'en': 'About me'
+    };
+    this.titleService.setTitle(translations[this.lang] + " - Tim Klenk.de");
   }
 
   get lang() {

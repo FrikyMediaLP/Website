@@ -7,6 +7,11 @@ import { CONTACT, ContactDBService } from 'src/app/services/contact-db.service';
 import { LangService } from 'src/app/services/lang.service';
 import { TwitchService } from 'src/app/services/twitch.service';
 import { environment } from '../../../environments/environment';
+import { Title } from '@angular/platform-browser';
+
+interface LANGOPTIONS {
+  [key: string]: string
+}
 
 @Component({
     selector: 'app-contact',
@@ -52,7 +57,8 @@ export class ContactComponent {
     private langService: LangService, 
     private contacts: ContactDBService, 
     private changeDetectorRef: ChangeDetectorRef,
-    public twitch: TwitchService
+    public twitch: TwitchService,
+    private titleService: Title
   ) {
     this.refetchPending();
 
@@ -70,6 +76,9 @@ export class ContactComponent {
     this.langService.langEvents.subscribe((lang) => {
       this.changeDetectorRef.detectChanges();
     });
+
+    this.langService.langEvents.subscribe(() => this.setTitle());
+    this.setTitle();
   }
 
   refetchPending(){
@@ -171,6 +180,14 @@ export class ContactComponent {
       hour: '2-digit',
       minute: '2-digit'
     });
+  }
+
+  setTitle() {
+    const translations: LANGOPTIONS = {
+      'de': 'Kontakt',
+      'en': 'Contact'
+    };
+    this.titleService.setTitle(translations[this.lang] + " - Tim Klenk.de");
   }
 
   get lang() {
